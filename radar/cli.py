@@ -2,14 +2,16 @@
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import logging
 import sys
 
 from rich.console import Console
 from rich.table import Table
 
-from .config import load_config
-from .pipeline import ingest
+from .config import load_config, today
+from .llm import LLMClient
+from .pipeline import ingest, process
 from .store import Store
 
 console = Console()
@@ -33,6 +35,21 @@ def cmd_fetch(args, cfg) -> int:
     return 0
 
 
+def cmd_extract(args, cfg) -> int:
+    store = Store(cfg["db_path"])
+    run_id = "extract-" + dt.datetime.now().strftime("%Y%m%d-%H%M%S")
+    llm = LLMClient.from_env(model=args.model, store=store, run_id=run_id, cfg=cfg)
+    stats = process(cfg, store, llm, today(cfg), limit=args.limit)
+    console.print(stats)
+    s = store.run_summary(run_id)
+    console.print(f"模型 {llm.model} | 调用 {s['calls']} 次 | tokens {s['prompt_tokens']}+{s['completion_tokens']}"
+                  f" | 估算成本 ${s['cost_usd']:.4f}")
+    for ev in store.events_changed_on(today(cfg)):
+        console.print(f"[{ev.country}/{ev.category}] {ev.headline_cn} | {ev.why_it_matters} | "
+                      f"{','.join(ev.impact_stage) or '-'} | conf={ev.confidence:.2f}")
+    return 0
+
+
 def cmd_stats(args, cfg) -> int:
     store = Store(cfg["db_path"])
     console.print(store.count_items())
@@ -44,6 +61,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--config", default=None, help="config.yaml 路径")
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("fetch", help="仅抓取并入库（阶段一）").set_defaults(fn=cmd_fetch)
+    ex = sub.add_parser("extract", help="对 status=new 的条目做结构化抽取（阶段二）")
+    ex.add_argument("--limit", type=int, default=None)
+    ex.add_argument("--model", default=None, help="临时覆盖 LLM_MODEL")
+    ex.set_defaults(fn=cmd_extract)
     sub.add_parser("stats", help="库内条目状态统计").set_defaults(fn=cmd_stats)
     return p
 

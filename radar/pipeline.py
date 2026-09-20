@@ -1,11 +1,15 @@
-"""流程编排。阶段一只有 ingest（fetch + dedupe + 入库）。"""
+"""流程编排：ingest（fetch + dedupe + 入库）与 process（extract -> store）。"""
 from __future__ import annotations
 
 import asyncio
+import datetime as dt
 from typing import Any
 
-from .dedupe import dedupe_items
+from .dedupe import dedupe_items, event_fingerprint
+from .extract import ItemExtraction, extract_all
 from .fetch import fetch_all
+from .llm import LLMClient
+from .models import Event, RawItem, Source
 from .store import Store
 
 
@@ -33,3 +37,43 @@ def ingest(cfg: dict[str, Any], store: Store, window_hours: float | None = None,
         "to_process": len(kept),
         "feed_report": report,
     }
+
+
+def source_of(it: RawItem) -> Source:
+    return Source(url=it.url, title=it.title, publisher=it.publisher,
+                  published=it.published, tier=it.tier)
+
+
+def new_event(it: RawItem, x: ItemExtraction, today: dt.date) -> Event:
+    return Event(
+        id=event_fingerprint(x.country or it.country_hint, it.title),
+        first_seen=today, last_updated=today,
+        country=x.country, category=x.category, entities=x.entities,
+        headline_cn=x.headline_cn, why_it_matters=x.why_it_matters,
+        impact_stage=x.impact_stage, effective_date=x.effective_date,
+        confidence=x.confidence, sources=[source_of(it)],
+    )
+
+
+def process(cfg: dict[str, Any], store: Store, llm: LLMClient, today: dt.date,
+            limit: int | None = None) -> dict[str, Any]:
+    """处理库内 status=new 的条目：抽取 -> 过滤 / 建事件。"""
+    ec = cfg.get("extract", {})
+    limit = limit or ec.get("max_items_per_run", 150)
+    items = store.items_by_status("new", limit=limit)
+    stats = {"processed": len(items), "filtered": 0, "events_new": 0, "failed": 0}
+    for it, x, err in extract_all(llm, items, ec.get("batch_size", 8)):
+        if x is None:
+            store.mark_item(it.id, "failed", note=err)
+            stats["failed"] += 1
+        elif not x.relevant:
+            store.mark_item(it.id, "filtered")
+            stats["filtered"] += 1
+        else:
+            ev = new_event(it, x, today)
+            if store.get_event(ev.id) is None:
+                store.save_event(ev, title_key=it.title)
+                stats["events_new"] += 1
+            store.add_source(ev.id, source_of(it))
+            store.mark_item(it.id, "linked", event_id=ev.id)
+    return stats
