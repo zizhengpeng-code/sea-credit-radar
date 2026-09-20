@@ -4,12 +4,12 @@ from __future__ import annotations
 import datetime as dt
 import logging
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, ValidationError, model_validator
 
 from .llm import LLMClient, LLMError
 from .models import Category, Country, RawItem, Stage, sane_effective_date
-from .prompts import (EXTRACT_SYSTEM, EXTRACT_VERSION, SHORTEN_SYSTEM, SHORTEN_VERSION,
-                      build_extract_prompt, build_shorten_prompt)
+from .prompts import (SHORTEN_SYSTEM, SHORTEN_VERSION, build_extract_prompt, build_shorten_prompt,
+                      get_extract_system)
 
 log = logging.getLogger("radar.extract")
 
@@ -47,6 +47,12 @@ class ItemExtraction(BaseModel):
 
 class BatchExtraction(BaseModel):
     results: list[ItemExtraction]
+
+
+class RawBatch(BaseModel):
+    """只校验外层结构；条目逐条校验，避免一条非法数据（如越界枚举）拖垮整批。"""
+
+    results: list[dict]
 
 
 def fit(text: str, n: int) -> str:
@@ -119,35 +125,61 @@ def _payload(items: list[RawItem]) -> list[dict]:
              "tier": it.tier} for i, it in enumerate(items)]
 
 
-def extract_batch(llm: LLMClient, items: list[RawItem], candidates: list[dict] | None = None
-                  ) -> dict[int, ItemExtraction]:
-    """抽取一批条目，返回 {批内序号: 结果}。模型漏掉的条目不在返回值里（由调用方处理）。"""
+def extract_batch(llm: LLMClient, items: list[RawItem], candidates: list[dict] | None = None,
+                  *, version: str | None = None, retry_missing: bool = True) -> dict[int, ItemExtraction]:
+    """抽取一批条目，返回 {批内序号: 结果}。
+
+    - 条目逐条校验：非法（缺字段、枚举越界）或模型漏掉的条目，只把这几条单独再抽一次，合法的保留
+    - JSON 整体损坏时 llm.complete 会抛 LLMError，由 extract_all 拆批处理
+    """
+    ver, system = get_extract_system(version)
     prompt = build_extract_prompt(_payload(items), candidates)
-    data = llm.complete(prompt, EXTRACT_SYSTEM, BatchExtraction, stage="extract",
-                        prompt_version=EXTRACT_VERSION)
+    data = llm.complete(prompt, system, RawBatch, stage="extract", prompt_version=ver)
     out: dict[int, ItemExtraction] = {}
-    for r in BatchExtraction.model_validate(data).results:
-        if 0 <= r.idx < len(items) and r.idx not in out:
-            out[r.idx] = r
+    for raw in data["results"]:
+        try:
+            x = ItemExtraction.model_validate(raw)
+        except ValidationError as exc:
+            log.info("条目校验失败，将单独重抽：%s", str(exc)[:200])
+            continue
+        if 0 <= x.idx < len(items) and x.idx not in out:
+            out[x.idx] = x
+    missing = [i for i in range(len(items)) if i not in out]
+    if missing and retry_missing:
+        try:
+            sub = extract_batch(llm, [items[i] for i in missing], candidates, version=version,
+                                retry_missing=False)
+            for j, x in sub.items():
+                out[missing[j]] = x.model_copy(update={"idx": missing[j]})
+        except LLMError as exc:
+            log.warning("缺失条目重抽失败：%s", exc)
     shorten_over_limit(llm, [x for x in out.values() if x.relevant])
     return {i: normalize(x, items[i].published.date()) for i, x in out.items()}
 
 
+def _extract_with_split(llm: LLMClient, batch: list[RawItem], candidates: list[dict] | None,
+                        version: str | None) -> list[tuple[RawItem, ItemExtraction | None, str]]:
+    """整批 JSON 损坏（重试后仍失败）时对半拆分递归，直到单条：一条坏输出最多损失它自己。"""
+    try:
+        got = extract_batch(llm, batch, candidates, version=version)
+    except LLMError as exc:
+        if len(batch) == 1:
+            log.warning("单条抽取失败，跳过：%s", exc)
+            return [(batch[0], None, str(exc)[:200])]
+        mid = len(batch) // 2
+        log.info("批次 %d 条失败，拆分重试：%s", len(batch), str(exc)[:120])
+        return (_extract_with_split(llm, batch[:mid], candidates, version)
+                + _extract_with_split(llm, batch[mid:], candidates, version))
+    return [(it, got.get(i), "" if got.get(i) else "模型未返回或返回了非法的该条数据") for i, it in enumerate(batch)]
+
+
 def extract_all(llm: LLMClient, items: list[RawItem], batch_size: int = 8,
-                candidates_for: "callable | None" = None
+                candidates_for: "callable | None" = None, version: str | None = None
                 ) -> list[tuple[RawItem, ItemExtraction | None, str]]:
-    """分批抽取。返回 [(条目, 结果或 None, 失败原因)]。整批失败（重试后仍非法）则该批全部记为 None。"""
+    """分批抽取。返回 [(条目, 结果或 None, 失败原因)]，顺序与输入一致。"""
     results: list[tuple[RawItem, ItemExtraction | None, str]] = []
     for s in range(0, len(items), batch_size):
         batch = items[s: s + batch_size]
         cands = candidates_for(batch) if candidates_for else None
-        try:
-            got = extract_batch(llm, batch, cands)
-        except LLMError as exc:
-            log.warning("批次 %d-%d 失败，跳过：%s", s, s + len(batch), exc)
-            results.extend((it, None, str(exc)[:200]) for it in batch)
-            continue
-        for i, it in enumerate(batch):
-            r = got.get(i)
-            results.append((it, r, "" if r else "模型未返回该条"))
+        results.extend(_extract_with_split(llm, batch, cands, version))
     return results

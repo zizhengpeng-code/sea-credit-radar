@@ -1,0 +1,426 @@
+{
+  "model": "deepseek-chat",
+  "provider": "openai",
+  "base_url": "https://api.deepseek.com/v1",
+  "prompt_version": "extract-v1",
+  "metrics": {
+    "n": 66,
+    "n_push": 30,
+    "n_not_push": 36,
+    "failed": 0,
+    "push": {
+      "accuracy": 0.8787878787878788,
+      "precision": 0.84375,
+      "recall": 0.9,
+      "miss_rate": 0.1,
+      "false_alarm_rate": 0.1388888888888889,
+      "tp": 27,
+      "fp": 5,
+      "fn": 3,
+      "tn": 31
+    },
+    "category": {
+      "accuracy_strict": 0.9,
+      "accuracy_given_pushed": 1.0,
+      "per_class": {
+        "regulation": {
+          "precision": 0.8181818181818182,
+          "recall": 1.0,
+          "f1": 0.9,
+          "tp": 9,
+          "fp": 2,
+          "fn": 0
+        },
+        "product": {
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "f1": 0.923076923076923,
+          "tp": 6,
+          "fp": 0,
+          "fn": 1
+        },
+        "funding": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
+        "market": {
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "f1": 0.6666666666666666,
+          "tp": 4,
+          "fp": 2,
+          "fn": 2
+        },
+        "risk": {
+          "precision": 0.8333333333333334,
+          "recall": 1.0,
+          "f1": 0.9090909090909091,
+          "tp": 5,
+          "fp": 1,
+          "fn": 0
+        }
+      }
+    },
+    "impact_stage": {
+      "precision": 0.5588235294117647,
+      "recall": 0.9047619047619048,
+      "f1": 0.6909090909090908,
+      "tp": 19,
+      "fp": 15,
+      "fn": 2,
+      "exact_match": 0.5666666666666667
+    },
+    "country_accuracy": 1.0,
+    "hard_push_accuracy": 0.6956521739130435,
+    "errors": [
+      {
+        "id": "r003",
+        "title": "PLDT Enterprise, CBS, Samsung PH Enable Digital Lending for DepEd Teachers Nationwide",
+        "gold": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "acquisition"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "acquisition",
+            "underwriting"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r005",
+        "title": "APPI Soroti Risiko Pembiayaan untuk Kebutuhan Sehari-hari Tanpa Pendapatan",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting",
+            "limit"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r007",
+        "title": "42 Multifinance Companies Have Problem Financing Above 5 Percent",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection",
+            "underwriting"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r011",
+        "title": "Govt Housing Loan Uptake Reaches IDR 25.29 Trillion, Renovations Hit 86,000 Homes",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r012",
+        "title": "China Fintech Lending Domination, Indonesia's P2P Lending Sector And The Limits Of Digital Tax Governance - OpEd",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r014",
+        "title": "GSIS hikes emergency loan assistance for calamity victims",
+        "gold": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "limit"
+          ]
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": false
+      },
+      {
+        "id": "r016",
+        "title": "BSP mandates SMS OTP ban; major banks, e-wallets to shift to biometrics",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "hard": true
+      },
+      {
+        "id": "r018",
+        "title": "S&P Warns of Credit, Earnings Risks at Indonesian State Lenders",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "hard": true
+      },
+      {
+        "id": "s019",
+        "title": "OJK to require P2P lenders to report borrower data to the SLIK credit registry from next quarter",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting",
+            "limit"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s025",
+        "title": "Bad loan ratio at Vietnamese consumer finance firm climbs to 12% in second quarter",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting",
+            "limit"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s026",
+        "title": "Data breach at Philippine online lender exposes 2 million borrowers' ID documents",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s027",
+        "title": "Kredivo parent FinAccel secures $150M debt facility to fund consumer loan growth in Indonesia and Vietnam",
+        "gold": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": [
+            "acquisition",
+            "limit"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s029",
+        "title": "Singapore BNPL usage doubles among young adults, MAS survey finds delinquency still below 2%",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "acquisition",
+            "underwriting"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r049",
+        "title": "Singapore Tests Cross-Bank AI to Flag Scam Accounts in Near Real Time",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "hard": true
+      },
+      {
+        "id": "r050",
+        "title": "Online Lending Apps: How they work and what to watch out for",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r051",
+        "title": "GCash lending arm Fuse marks 10 years of safe, accessible borrowing for Filipinos",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "acquisition"
+          ]
+        },
+        "hard": true
+      },
+      {
+        "id": "r053",
+        "title": "BSP to tighten disciplinary actions vs erring banks, officials",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "hard": true
+      },
+      {
+        "id": "r058",
+        "title": "BSP Draft Tightens AML Controls Across Philippine Merchant Payments",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "hard": true
+      }
+    ]
+  },
+  "usage": {
+    "calls": 13,
+    "calls_ok": 12,
+    "prompt_tokens": 17298,
+    "completion_tokens": 4807,
+    "cost_usd": 0.00686238,
+    "cost_per_item_usd": 0.00010397545454545455,
+    "cost_per_1k_usd": 0.10397545454545455,
+    "latency_per_item_s": 0.3411814909091349,
+    "latency_per_call_s": 1.7321521846156078,
+    "wall_s": 22.517978400002903,
+    "call_failures": [
+      "extract: invalid: Expecting ',' delimiter: line 1 column 2204 (char 2203)"
+    ]
+  },
+  "timestamp": "20260921-065656",
+  "run": 3,
+  "prompt_hash": "1d7c5bd2",
+  "testset": {
+    "file": "testset.jsonl",
+    "sha": "702ca078",
+    "n": 66
+  },
+  "note": "dev 集：v1 基线 vs v2（v2 由 dev 错误分析得出，数字偏乐观）"
+}

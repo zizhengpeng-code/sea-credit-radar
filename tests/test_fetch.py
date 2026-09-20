@@ -93,3 +93,18 @@ def test_is_junk_title():
     assert is_junk_title("Bank Officer IV Job Details", pats)
     assert is_junk_title("Financial Institutions Directory", pats)
     assert not is_junk_title("OJK tightens digital lending rules", pats)
+
+
+def test_snippet_unescapes_entities():
+    from radar.fetch import _strip_html
+    assert _strip_html("Title&nbsp;&nbsp;<font>Daily Tribune</font> &amp; more") == "Title Daily Tribune & more"
+
+
+def test_notify_method_env_override(monkeypatch, tmp_path):
+    from radar.config import load_config
+    cfg_file = tmp_path / "c.yaml"
+    cfg_file.write_text("db_path: x.db\nnotify:\n  method: none\nfeeds: []\n", encoding="utf-8")
+    monkeypatch.delenv("NOTIFY_METHOD", raising=False)
+    assert load_config(cfg_file)["notify"]["method"] == "none"
+    monkeypatch.setenv("NOTIFY_METHOD", "serverchan")
+    assert load_config(cfg_file)["notify"]["method"] == "serverchan"

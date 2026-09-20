@@ -1,0 +1,229 @@
+{
+  "model": "deepseek-chat",
+  "provider": "openai",
+  "base_url": "https://api.deepseek.com/v1",
+  "prompt_version": "extract-v2",
+  "metrics": {
+    "n": 29,
+    "n_push": 13,
+    "n_not_push": 16,
+    "failed": 0,
+    "push": {
+      "accuracy": 0.9310344827586207,
+      "precision": 0.9230769230769231,
+      "recall": 0.9230769230769231,
+      "miss_rate": 0.07692307692307693,
+      "false_alarm_rate": 0.0625,
+      "tp": 12,
+      "fp": 1,
+      "fn": 1,
+      "tn": 15
+    },
+    "category": {
+      "accuracy_strict": 0.8461538461538461,
+      "accuracy_given_pushed": 0.9166666666666666,
+      "per_class": {
+        "regulation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        },
+        "product": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "funding": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
+        "market": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "tp": 1,
+          "fp": 0,
+          "fn": 2
+        },
+        "risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    "impact_stage": {
+      "precision": 0.7142857142857143,
+      "recall": 0.8333333333333334,
+      "f1": 0.7692307692307692,
+      "tp": 10,
+      "fp": 4,
+      "fn": 2,
+      "exact_match": 0.6153846153846154
+    },
+    "country_accuracy": 1.0,
+    "hard_push_accuracy": 0.7142857142857143,
+    "errors": [
+      {
+        "id": "h001",
+        "title": "Grab acquires Atome to strengthen BNPL business in Indonesia, ASEAN",
+        "gold": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": [
+            "acquisition"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h002",
+        "title": "S&P: State-owned bank loans grow 26%, net interest margins pressured",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "h003",
+        "title": "Why did Grab pay $1.49 billion for the lending business it chose not to build?",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "h004",
+        "title": "OJK issues rule requiring digital lenders to disclose the effective annual interest rate before loan approval",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "pricing",
+            "acquisition"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h005",
+        "title": "BSP orders banks to stop unsolicited credit card limit increases",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "limit"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "limit",
+            "acquisition"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h011",
+        "title": "GoTo Financial launches paylater for Gojek drivers with income-based credit limits",
+        "gold": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "limit",
+            "underwriting"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "acquisition",
+            "limit"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h028",
+        "title": "IFC clears landmark $110-million First Circle SME securitization deal",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "hard": true
+      }
+    ]
+  },
+  "usage": {
+    "calls": 6,
+    "calls_ok": 6,
+    "prompt_tokens": 6894,
+    "completion_tokens": 1528,
+    "cost_usd": 0.0025720800000000005,
+    "cost_per_item_usd": 8.869241379310346e-05,
+    "cost_per_1k_usd": 0.08869241379310346,
+    "latency_per_item_s": 0.26235565517244736,
+    "latency_per_call_s": 1.2680523333334957,
+    "wall_s": 7.6083140000009735,
+    "call_failures": []
+  },
+  "timestamp": "20260921-065855",
+  "run": 2,
+  "prompt_hash": "5417369d",
+  "testset": {
+    "file": "holdout.jsonl",
+    "sha": "2fe9961d",
+    "n": 29
+  },
+  "note": "留出集：v2 调参时未见过"
+}

@@ -1,0 +1,192 @@
+{
+  "model": "deepseek-chat",
+  "provider": "openai",
+  "base_url": "https://api.deepseek.com/v1",
+  "prompt_version": "extract-v2",
+  "metrics": {
+    "n": 66,
+    "n_push": 30,
+    "n_not_push": 36,
+    "failed": 0,
+    "push": {
+      "accuracy": 0.9848484848484849,
+      "precision": 1.0,
+      "recall": 0.9666666666666667,
+      "miss_rate": 0.03333333333333333,
+      "false_alarm_rate": 0.0,
+      "tp": 29,
+      "fp": 0,
+      "fn": 1,
+      "tn": 36
+    },
+    "category": {
+      "accuracy_strict": 0.9666666666666667,
+      "accuracy_given_pushed": 1.0,
+      "per_class": {
+        "regulation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 9,
+          "fp": 0,
+          "fn": 0
+        },
+        "product": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 7,
+          "fp": 0,
+          "fn": 0
+        },
+        "funding": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 3,
+          "fp": 0,
+          "fn": 0
+        },
+        "market": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1": 0.9090909090909091,
+          "tp": 5,
+          "fp": 0,
+          "fn": 1
+        },
+        "risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 5,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    "impact_stage": {
+      "precision": 0.8695652173913043,
+      "recall": 0.9523809523809523,
+      "f1": 0.909090909090909,
+      "tp": 20,
+      "fp": 3,
+      "fn": 1,
+      "exact_match": 0.8333333333333334
+    },
+    "country_accuracy": 1.0,
+    "hard_push_accuracy": 0.9565217391304348,
+    "errors": [
+      {
+        "id": "r012",
+        "title": "China Fintech Lending Domination, Indonesia's P2P Lending Sector And The Limits Of Digital Tax Governance - OpEd",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r016",
+        "title": "BSP mandates SMS OTP ban; major banks, e-wallets to shift to biometrics",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "hard": true
+      },
+      {
+        "id": "r017",
+        "title": "Indonesia's finance firms face rising borrowing costs in 2027",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "hard": false
+      },
+      {
+        "id": "s025",
+        "title": "Bad loan ratio at Vietnamese consumer finance firm climbs to 12% in second quarter",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s026",
+        "title": "Data breach at Philippine online lender exposes 2 million borrowers' ID documents",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "hard": false
+      }
+    ]
+  },
+  "usage": {
+    "calls": 11,
+    "calls_ok": 10,
+    "prompt_tokens": 17313,
+    "completion_tokens": 4059,
+    "cost_usd": 0.006552420000000001,
+    "cost_per_item_usd": 9.927909090909092e-05,
+    "cost_per_1k_usd": 0.09927909090909091,
+    "latency_per_item_s": 0.2810548439393835,
+    "latency_per_call_s": 1.686329063636301,
+    "wall_s": 18.54961969999931,
+    "call_failures": [
+      "extract: invalid: Expecting ',' delimiter: line 1 column 2147 (char 2146)"
+    ]
+  },
+  "timestamp": "20260921-065656",
+  "run": 2,
+  "prompt_hash": "5417369d",
+  "testset": {
+    "file": "testset.jsonl",
+    "sha": "702ca078",
+    "n": 66
+  },
+  "note": "dev 集：v1 基线 vs v2（v2 由 dev 错误分析得出，数字偏乐观）"
+}

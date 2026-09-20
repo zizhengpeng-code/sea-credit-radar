@@ -7,6 +7,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from radar.dedupe import item_id  # noqa: E402
+from radar.llm import CallRecord  # noqa: E402
 from radar.models import RawItem  # noqa: E402
 from radar.store import Store  # noqa: E402
 
@@ -53,6 +54,9 @@ class FakeLLM:
         self.stages = []
         self.model = "fake"
         self.run_id = "fake"
+        self.provider = "fake"
+        self.base_url = ""
+        self.history = []
 
     def complete(self, prompt, system, schema, *, stage="llm", prompt_version=""):
         self.prompts.append(prompt)
@@ -60,4 +64,5 @@ class FakeLLM:
         r = self.responses.pop(0)
         if isinstance(r, Exception):
             raise r
+        self.history.append(CallRecord(stage, self.model, 100, 20, 0.001, 0.1, True))  # 供成本聚合的测试使用
         return schema.model_validate(r).model_dump(mode="json")

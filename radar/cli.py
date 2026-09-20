@@ -4,7 +4,9 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import logging
+import os
 import sys
+from pathlib import Path
 
 from rich.console import Console
 from rich.markdown import Markdown
@@ -92,7 +94,14 @@ def cmd_digest(args, cfg) -> int:
     """从库中重新渲染某天的简报（不联网、不调用模型）。"""
     store = Store(cfg["db_path"])
     day = dt.date.fromisoformat(args.date) if args.date else today(cfg)
-    console.print(Markdown(render_markdown(build_digest(store, day))))
+    md = render_markdown(build_digest(store, day))
+    console.print(Markdown(md))
+    if args.export_svg:  # 导出终端渲染效果，用作 README 示例截图
+        rec = Console(record=True, width=100, file=open(os.devnull, "w", encoding="utf-8"))
+        rec.print(Markdown(md))
+        Path(args.export_svg).parent.mkdir(parents=True, exist_ok=True)
+        rec.save_svg(args.export_svg, title=f"SEA Credit Radar {day.isoformat()}")
+        console.print(f"已导出 {args.export_svg}")
     return 0
 
 
@@ -119,6 +128,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     d = sub.add_parser("digest", help="从库中重新渲染某天简报（默认今天）")
     d.add_argument("--date", default=None, help="YYYY-MM-DD")
+    d.add_argument("--export-svg", default=None, help="把终端渲染效果导出为 SVG")
     d.set_defaults(fn=cmd_digest)
 
     sub.add_parser("fetch", help="仅抓取并入库").set_defaults(fn=cmd_fetch)

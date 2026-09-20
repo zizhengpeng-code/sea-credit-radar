@@ -109,3 +109,33 @@ def test_event_fingerprint_stable_and_country_sensitive():
     f1 = event_fingerprint("ID", "OJK tightens digital lending rules")
     assert f1 == event_fingerprint("ID", "digital lending rules OJK tightens")
     assert f1 != event_fingerprint("PH", "OJK tightens digital lending rules")
+
+
+def test_date_only_difference_is_not_duplicate():
+    """回归：只差日期的模板标题（汇率播报 / 月度新闻稿）曾被误并成一条。"""
+    from radar.dedupe import dates_in
+    a = "LOOK: Foreign Exchange Rate as of September 17, 2026 Source: BSP"
+    b = "LOOK: Foreign Exchange Rate as of September 11, 2026 Source: BSP"
+    assert not is_near_duplicate(a, b)
+    assert not is_near_duplicate("OJK Press Release: April 2026 Board of Commissioners Monthly Meeting",
+                                 "OJK Press Release: May 2026 Board of Commissioners Monthly Meeting")
+    assert dates_in(a) == {("sep", "17", "2026")}
+    assert dates_in("OJK Press Release: April 2026 Board Meeting") == {("apr", "", "2026")}
+
+
+def test_month_like_words_are_not_dates():
+    """回归：market / summary / decision / may（情态动词）里的月份缩写不能被当成日期。"""
+    from radar.dedupe import dates_in
+    assert dates_in("Market summary: decision on lending rules may follow") == set()
+    assert dates_in("Grab market share and Decision Bank") == set()
+    # 因此与不含日期的标题仍可正常合并
+    assert is_near_duplicate("Grab acquires majority stake in Atome Financial market entry",
+                             "Grab acquires majority stake in Atome Financial for market entry")
+
+
+def test_same_date_or_no_date_still_merges():
+    a = "BSP Foreign Exchange Rate as of September 17, 2026 published"
+    assert is_near_duplicate(a, "BSP foreign exchange rate as of September 17, 2026 published today")
+    # 只有一边带日期时不阻止合并
+    assert is_near_duplicate("OJK tightens digital lending rules for fintech lenders",
+                             "OJK tightens rules on digital lending for fintech lenders in September")

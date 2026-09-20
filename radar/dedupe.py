@@ -96,9 +96,26 @@ def title_similarity(t1: str, t2: str) -> float:
     return jaccard(tokenize(t1), tokenize(t2))
 
 
+# 月份缩写前必须是词边界，且后面必须跟日或年；否则 market / summary / decision 里的 mar / dec 会被误当成月份
+_DATE_RE = re.compile(
+    r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+"
+    r"(?:(\d{1,2})(?:st|nd|rd|th)?\b,?\s*(\d{4})?|(\d{4})\b)",
+    re.I)
+
+
+def dates_in(title: str) -> set[tuple[str, str, str]]:
+    """标题里出现的 (月, 日, 年)，如 'as of September 17, 2026' -> {('sep','17','2026')}。"""
+    return {(m.group(1).lower(), m.group(2) or "", m.group(3) or m.group(4) or "")
+            for m in _DATE_RE.finditer(title)}
+
+
 def is_near_duplicate(t1: str, t2: str, simhash_max: int = 3, jaccard_min: float = 0.6) -> bool:
     k1, k2 = tokenize(t1), tokenize(t2)
     if not k1 or not k2:
+        return False
+    # 只差日期的模板标题（每日汇率播报、每月董事会新闻稿）不是重复：每一期都是新内容
+    d1, d2 = dates_in(t1), dates_in(t2)
+    if d1 and d2 and d1 != d2:
         return False
     if jaccard(k1, k2) >= jaccard_min:
         return True

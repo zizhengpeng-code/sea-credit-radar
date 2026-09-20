@@ -1,0 +1,207 @@
+{
+  "model": "deepseek-reasoner",
+  "provider": "openai",
+  "base_url": "https://api.deepseek.com/v1",
+  "prompt_version": "extract-v2",
+  "metrics": {
+    "n": 66,
+    "n_push": 30,
+    "n_not_push": 36,
+    "failed": 0,
+    "push": {
+      "accuracy": 0.9545454545454546,
+      "precision": 0.9354838709677419,
+      "recall": 0.9666666666666667,
+      "miss_rate": 0.03333333333333333,
+      "false_alarm_rate": 0.05555555555555555,
+      "tp": 29,
+      "fp": 2,
+      "fn": 1,
+      "tn": 34
+    },
+    "category": {
+      "accuracy_strict": 0.9333333333333333,
+      "accuracy_given_pushed": 0.9655172413793104,
+      "per_class": {
+        "regulation": {
+          "precision": 0.8,
+          "recall": 0.8888888888888888,
+          "f1": 0.8421052631578948,
+          "tp": 8,
+          "fp": 2,
+          "fn": 1
+        },
+        "product": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 7,
+          "fp": 0,
+          "fn": 0
+        },
+        "funding": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571428571428571,
+          "tp": 3,
+          "fp": 1,
+          "fn": 0
+        },
+        "market": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1": 0.9090909090909091,
+          "tp": 5,
+          "fp": 0,
+          "fn": 1
+        },
+        "risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 5,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    "impact_stage": {
+      "precision": 0.9523809523809523,
+      "recall": 0.9523809523809523,
+      "f1": 0.9523809523809523,
+      "tp": 20,
+      "fp": 1,
+      "fn": 1,
+      "exact_match": 0.9
+    },
+    "country_accuracy": 1.0,
+    "hard_push_accuracy": 0.8695652173913043,
+    "errors": [
+      {
+        "id": "r016",
+        "title": "BSP mandates SMS OTP ban; major banks, e-wallets to shift to biometrics",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r017",
+        "title": "Indonesia's finance firms face rising borrowing costs in 2027",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s023",
+        "title": "Philippine SEC bans lending apps from reading borrowers' phone contacts and sets penalties for harassment in debt collection",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s026",
+        "title": "Data breach at Philippine online lender exposes 2 million borrowers' ID documents",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r053",
+        "title": "BSP to tighten disciplinary actions vs erring banks, officials",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r066",
+        "title": "MSME Ministry to expand KUR loan access for laundry businesses",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "acquisition"
+          ]
+        },
+        "hard": true
+      }
+    ]
+  },
+  "usage": {
+    "calls": 9,
+    "calls_ok": 9,
+    "prompt_tokens": 15220,
+    "completion_tokens": 27426,
+    "cost_usd": 0.01578052,
+    "cost_per_item_usd": 0.00023909878787878788,
+    "cost_per_1k_usd": 0.23909878787878788,
+    "latency_per_item_s": 1.8084242287878816,
+    "latency_per_call_s": 13.261777677777799,
+    "wall_s": 119.35599910000019,
+    "call_failures": []
+  },
+  "timestamp": "20260921-070041",
+  "run": 1,
+  "prompt_hash": "5417369d",
+  "testset": {
+    "file": "testset.jsonl",
+    "sha": "702ca078",
+    "n": 66
+  },
+  "note": "同供应商第二模型（推理模型）"
+}

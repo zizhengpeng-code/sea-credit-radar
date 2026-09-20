@@ -75,22 +75,60 @@ def test_extract_batch_maps_idx_and_ignores_bad_idx():
 
 
 def test_extract_all_batches_and_records_failure():
+    """批次 [2,3] 整体失败 -> 对半拆分：2 成功，3 单条失败；其余批次不受影响。"""
     items = [make_item(f"story {i} about lending") for i in range(5)]
-    llm = FakeLLM([
-        {"results": [{"idx": i, "relevant": False} for i in range(2)]},
-        LLMError("重试后仍无法通过校验"),
-        {"results": [{"idx": 0, "relevant": False}]},
-    ])
+    irrelevant = lambda n: {"results": [{"idx": i, "relevant": False} for i in range(n)]}  # noqa: E731
+    llm = FakeLLM([irrelevant(2),                       # 批次 [0,1]
+                   LLMError("重试后仍无法通过校验"),        # 批次 [2,3] 整体失败
+                   irrelevant(1),                       # 拆分后的 [2]
+                   LLMError("重试后仍无法通过校验"),        # 拆分后的 [3]：单条失败
+                   irrelevant(1)])                      # 批次 [4]
     res = extract_all(llm, items, batch_size=2)
-    assert [r[1] is not None for r in res] == [True, True, False, False, True]
-    assert "校验" in res[2][2]
+    assert [r[1] is not None for r in res] == [True, True, True, False, True]
+    assert "校验" in res[3][2]
 
 
 def test_extract_all_marks_missing_item():
     items = [make_item("story a lending"), make_item("story b lending")]
-    llm = FakeLLM([{"results": [{"idx": 0, "relevant": False}]}])
+    llm = FakeLLM([{"results": [{"idx": 0, "relevant": False}]},   # 第 2 条漏掉
+                   {"results": []}])                                # 单独重抽仍然没有
     res = extract_all(llm, items, batch_size=8)
-    assert res[1][1] is None and "未返回" in res[1][2]
+    assert res[0][1] is not None and res[1][1] is None and "未返回" in res[1][2]
+
+
+def test_invalid_item_is_retried_alone_and_valid_ones_kept():
+    items = [make_item("story a about lending"), make_item("story b about lending"),
+             make_item("story c about lending")]
+    llm = FakeLLM([
+        {"results": [{"idx": 0, "relevant": False}, dict(GOOD, idx=1, category="gossip"),  # idx1 枚举越界
+                     {"idx": 2, "relevant": False}]},
+        {"results": [dict(GOOD, idx=0)]},                                                   # 重抽：批内 idx=0
+    ])
+    out = extract_batch(llm, items)
+    assert set(out) == {0, 1, 2}
+    assert out[1].relevant and out[1].category == "regulation" and out[1].idx == 1   # 映射回原序号
+    assert "story b about lending" in llm.prompts[1] and "story a about lending" not in llm.prompts[1]
+    assert llm.stages[:2] == ["extract", "extract"]
+
+
+def test_retry_happens_only_once():
+    items = [make_item("story a about lending")]
+    llm = FakeLLM([{"results": [dict(GOOD, idx=0, category="gossip")]},
+                   {"results": [dict(GOOD, idx=0, category="gossip")]}])   # 重抽仍非法
+    assert extract_batch(llm, items) == {}
+    assert len(llm.prompts) == 2
+
+
+def test_broken_json_batch_is_split_and_only_the_bad_item_is_lost():
+    items = [make_item(f"story {i} about lending") for i in range(4)]
+    irrelevant = lambda n: {"results": [{"idx": i, "relevant": False} for i in range(n)]}  # noqa: E731
+    llm = FakeLLM([LLMError("Expecting ',' delimiter"),   # 整批 4 条损坏
+                   irrelevant(2),                          # 拆成 [0,1] 成功
+                   LLMError("Expecting ',' delimiter"),   # [2,3] 再失败
+                   irrelevant(1),                          # [2] 成功
+                   LLMError("Expecting ',' delimiter")])  # [3] 单条失败
+    res = extract_all(llm, items, batch_size=8)
+    assert [r[1] is not None for r in res] == [True, True, True, False]
 
 
 def test_process_creates_event_filters_and_fails(store, cfg):
@@ -100,6 +138,7 @@ def test_process_creates_event_filters_and_fails(store, cfg):
     store.add_raw_items([a, b, c])
     cfg["extract"] = {"batch_size": 8}
     llm = FakeLLM([{"results": [GOOD, {"idx": 1, "relevant": False}]},  # 第 3 条（idx 2）未返回
+                   {"results": []},                                       # 单独重抽仍失败
                    ENRICH_OK])  # GOOD 是监管类事件，会触发 enrich
     stats = process(cfg, store, llm, dt.date(2026, 9, 21), fetch_text=lambda url, **kw: None)
     assert stats == {"processed": 3, "filtered": 1, "events_new": 1, "updates": 0,
@@ -157,3 +196,13 @@ def test_no_shorten_call_when_within_limits():
     llm = FakeLLM([{"results": [GOOD]}])
     extract_batch(llm, [make_item("OJK caps paylater")])
     assert llm.stages == ["extract"]
+
+
+def test_prompt_skips_snippet_that_only_repeats_title():
+    base = {"idx": 0, "title": "BSP mandates SMS OTP ban", "publisher": "P", "published": "2026-09-20",
+            "country_hint": "PH", "tier": 3}
+    only_title = build_extract_prompt([dict(base, snippet="BSP mandates SMS OTP ban Explained PH")])
+    assert "摘要:" not in only_title
+    real = build_extract_prompt([dict(base, snippet="BSP mandates SMS OTP ban The central bank said banks and "
+                                                    "e-wallets must move to biometrics by June")])
+    assert "摘要: The central bank said" in real

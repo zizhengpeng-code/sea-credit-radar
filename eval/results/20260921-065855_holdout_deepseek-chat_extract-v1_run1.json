@@ -1,0 +1,253 @@
+{
+  "model": "deepseek-chat",
+  "provider": "openai",
+  "base_url": "https://api.deepseek.com/v1",
+  "prompt_version": "extract-v1",
+  "metrics": {
+    "n": 29,
+    "n_push": 13,
+    "n_not_push": 16,
+    "failed": 0,
+    "push": {
+      "accuracy": 0.9655172413793104,
+      "precision": 1.0,
+      "recall": 0.9230769230769231,
+      "miss_rate": 0.07692307692307693,
+      "false_alarm_rate": 0.0,
+      "tp": 12,
+      "fp": 0,
+      "fn": 1,
+      "tn": 16
+    },
+    "category": {
+      "accuracy_strict": 0.8461538461538461,
+      "accuracy_given_pushed": 0.9166666666666666,
+      "per_class": {
+        "regulation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        },
+        "product": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "funding": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8,
+          "tp": 2,
+          "fp": 1,
+          "fn": 0
+        },
+        "market": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "tp": 1,
+          "fp": 0,
+          "fn": 2
+        },
+        "risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    "impact_stage": {
+      "precision": 0.6111111111111112,
+      "recall": 0.9166666666666666,
+      "f1": 0.7333333333333334,
+      "tp": 11,
+      "fp": 7,
+      "fn": 1,
+      "exact_match": 0.46153846153846156
+    },
+    "country_accuracy": 1.0,
+    "hard_push_accuracy": 0.8571428571428571,
+    "errors": [
+      {
+        "id": "h001",
+        "title": "Grab acquires Atome to strengthen BNPL business in Indonesia, ASEAN",
+        "gold": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": [
+            "acquisition"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h002",
+        "title": "S&P: State-owned bank loans grow 26%, net interest margins pressured",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "h003",
+        "title": "Why did Grab pay $1.49 billion for the lending business it chose not to build?",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "h004",
+        "title": "OJK issues rule requiring digital lenders to disclose the effective annual interest rate before loan approval",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "pricing",
+            "acquisition"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h008",
+        "title": "Indonesia's multi-finance sector NPF rises to 2.9% as motorcycle loan defaults climb",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h009",
+        "title": "Philippine lender hit by ransomware attack, borrower repayment records unavailable",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection",
+            "underwriting"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h011",
+        "title": "GoTo Financial launches paylater for Gojek drivers with income-based credit limits",
+        "gold": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "limit",
+            "underwriting"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "underwriting",
+            "limit",
+            "acquisition"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h013",
+        "title": "Singapore household debt servicing ratio edges up as credit card balances hit a record",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "limit",
+            "collection"
+          ]
+        },
+        "hard": false
+      }
+    ]
+  },
+  "usage": {
+    "calls": 6,
+    "calls_ok": 6,
+    "prompt_tokens": 6962,
+    "completion_tokens": 1557,
+    "cost_usd": 0.0026033000000000002,
+    "cost_per_item_usd": 8.976896551724139e-05,
+    "cost_per_1k_usd": 0.0897689655172414,
+    "latency_per_item_s": 0.30883976206904007,
+    "latency_per_call_s": 1.4927255166670268,
+    "wall_s": 8.956353100002161,
+    "call_failures": []
+  },
+  "timestamp": "20260921-065855",
+  "run": 1,
+  "prompt_hash": "1d7c5bd2",
+  "testset": {
+    "file": "holdout.jsonl",
+    "sha": "2fe9961d",
+    "n": 29
+  },
+  "note": "留出集：v2 调参时未见过"
+}

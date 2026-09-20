@@ -4,6 +4,7 @@ from __future__ import annotations
 import asyncio
 import calendar
 import datetime as dt
+import html
 import logging
 import math
 import re
@@ -38,7 +39,8 @@ def feed_url(feed: dict[str, Any], window_days: int | None = None) -> str:
 
 
 def _strip_html(s: str) -> str:
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s or "")).strip()
+    """去标签、还原 &nbsp; 等实体、压缩空白（Google News 摘要常带 &nbsp;&nbsp; 残留）。"""
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s or ""))).strip()
 
 
 def parse_feed(content: bytes, feed: dict[str, Any], now: dt.datetime,

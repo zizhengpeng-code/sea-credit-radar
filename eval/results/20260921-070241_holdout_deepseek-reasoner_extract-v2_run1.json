@@ -1,0 +1,173 @@
+{
+  "model": "deepseek-reasoner",
+  "provider": "openai",
+  "base_url": "https://api.deepseek.com/v1",
+  "prompt_version": "extract-v2",
+  "metrics": {
+    "n": 29,
+    "n_push": 13,
+    "n_not_push": 16,
+    "failed": 0,
+    "push": {
+      "accuracy": 0.9310344827586207,
+      "precision": 0.9230769230769231,
+      "recall": 0.9230769230769231,
+      "miss_rate": 0.07692307692307693,
+      "false_alarm_rate": 0.0625,
+      "tp": 12,
+      "fp": 1,
+      "fn": 1,
+      "tn": 15
+    },
+    "category": {
+      "accuracy_strict": 0.8461538461538461,
+      "accuracy_given_pushed": 0.9166666666666666,
+      "per_class": {
+        "regulation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        },
+        "product": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        },
+        "funding": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "tp": 2,
+          "fp": 2,
+          "fn": 0
+        },
+        "market": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "tp": 1,
+          "fp": 0,
+          "fn": 2
+        },
+        "risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    "impact_stage": {
+      "precision": 1.0,
+      "recall": 0.8333333333333334,
+      "f1": 0.9090909090909091,
+      "tp": 10,
+      "fp": 0,
+      "fn": 2,
+      "exact_match": 0.8461538461538461
+    },
+    "country_accuracy": 1.0,
+    "hard_push_accuracy": 0.7142857142857143,
+    "errors": [
+      {
+        "id": "h002",
+        "title": "S&P: State-owned bank loans grow 26%, net interest margins pressured",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "h003",
+        "title": "Why did Grab pay $1.49 billion for the lending business it chose not to build?",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "h012",
+        "title": "Maya Bank offers zero-interest instalments on credit cards for first-time borrowers",
+        "gold": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "pricing",
+            "acquisition"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "product",
+          "impact_stage": [
+            "acquisition"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "h028",
+        "title": "IFC clears landmark $110-million First Circle SME securitization deal",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": [
+            "limit"
+          ]
+        },
+        "hard": true
+      }
+    ]
+  },
+  "usage": {
+    "calls": 4,
+    "calls_ok": 4,
+    "prompt_tokens": 6710,
+    "completion_tokens": 6986,
+    "cost_usd": 0.00481292,
+    "cost_per_item_usd": 0.00016596275862068964,
+    "cost_per_1k_usd": 0.16596275862068965,
+    "latency_per_item_s": 0.9958645862069058,
+    "latency_per_call_s": 7.2200182500000665,
+    "wall_s": 28.880073000000266,
+    "call_failures": []
+  },
+  "timestamp": "20260921-070241",
+  "run": 1,
+  "prompt_hash": "5417369d",
+  "testset": {
+    "file": "holdout.jsonl",
+    "sha": "2fe9961d",
+    "n": 29
+  },
+  "note": "同供应商第二模型（推理模型）"
+}

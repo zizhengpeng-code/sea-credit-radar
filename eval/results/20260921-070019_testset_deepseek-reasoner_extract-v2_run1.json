@@ -1,0 +1,278 @@
+{
+  "model": "deepseek-reasoner",
+  "provider": "openai",
+  "base_url": "https://api.deepseek.com/v1",
+  "prompt_version": "extract-v2",
+  "metrics": {
+    "n": 66,
+    "n_push": 30,
+    "n_not_push": 36,
+    "failed": 0,
+    "push": {
+      "accuracy": 0.9393939393939394,
+      "precision": 0.9333333333333333,
+      "recall": 0.9333333333333333,
+      "miss_rate": 0.06666666666666667,
+      "false_alarm_rate": 0.05555555555555555,
+      "tp": 28,
+      "fp": 2,
+      "fn": 2,
+      "tn": 34
+    },
+    "category": {
+      "accuracy_strict": 0.9,
+      "accuracy_given_pushed": 0.9642857142857143,
+      "per_class": {
+        "regulation": {
+          "precision": 0.8888888888888888,
+          "recall": 0.8888888888888888,
+          "f1": 0.8888888888888888,
+          "tp": 8,
+          "fp": 1,
+          "fn": 1
+        },
+        "product": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 7,
+          "fp": 0,
+          "fn": 0
+        },
+        "funding": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999,
+          "tp": 3,
+          "fp": 2,
+          "fn": 0
+        },
+        "market": {
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "tp": 4,
+          "fp": 0,
+          "fn": 2
+        },
+        "risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 5,
+          "fp": 0,
+          "fn": 0
+        }
+      }
+    },
+    "impact_stage": {
+      "precision": 0.8571428571428571,
+      "recall": 0.8571428571428571,
+      "f1": 0.8571428571428571,
+      "tp": 18,
+      "fp": 3,
+      "fn": 3,
+      "exact_match": 0.7333333333333333
+    },
+    "country_accuracy": 1.0,
+    "hard_push_accuracy": 0.8260869565217391,
+    "errors": [
+      {
+        "id": "r005",
+        "title": "APPI Soroti Risiko Pembiayaan untuk Kebutuhan Sehari-hari Tanpa Pendapatan",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": []
+        },
+        "hard": false
+      },
+      {
+        "id": "r006",
+        "title": "Explicit consent required for sharing customers’ credit information from November 1",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r007",
+        "title": "42 Multifinance Companies Have Problem Financing Above 5 Percent",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r012",
+        "title": "China Fintech Lending Domination, Indonesia's P2P Lending Sector And The Limits Of Digital Tax Governance - OpEd",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r016",
+        "title": "BSP mandates SMS OTP ban; major banks, e-wallets to shift to biometrics",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r017",
+        "title": "Indonesia's finance firms face rising borrowing costs in 2027",
+        "gold": {
+          "push": true,
+          "category": "market",
+          "impact_stage": [
+            "pricing"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "hard": false
+      },
+      {
+        "id": "s023",
+        "title": "Philippine SEC bans lending apps from reading borrowers' phone contacts and sets penalties for harassment in debt collection",
+        "gold": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "underwriting",
+            "collection"
+          ]
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "collection"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "s026",
+        "title": "Data breach at Philippine online lender exposes 2 million borrowers' ID documents",
+        "gold": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "risk",
+          "impact_stage": [
+            "underwriting"
+          ]
+        },
+        "hard": false
+      },
+      {
+        "id": "r052",
+        "title": "Qupital Raises $300M in Series C Led by M Capital and New MUFG ABS Financing, Eyes Overseas Markets and IPO",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "funding",
+          "impact_stage": []
+        },
+        "hard": true
+      },
+      {
+        "id": "r066",
+        "title": "MSME Ministry to expand KUR loan access for laundry businesses",
+        "gold": {
+          "push": false,
+          "category": null,
+          "impact_stage": []
+        },
+        "pred": {
+          "push": true,
+          "category": "regulation",
+          "impact_stage": [
+            "acquisition",
+            "underwriting"
+          ]
+        },
+        "hard": true
+      }
+    ]
+  },
+  "usage": {
+    "calls": 9,
+    "calls_ok": 9,
+    "prompt_tokens": 15220,
+    "completion_tokens": 27018,
+    "cost_usd": 0.01560916,
+    "cost_per_item_usd": 0.00023650242424242424,
+    "cost_per_1k_usd": 0.23650242424242424,
+    "latency_per_item_s": 1.9222911015151498,
+    "latency_per_call_s": 14.096801411111098,
+    "wall_s": 126.87121269999989,
+    "call_failures": []
+  },
+  "timestamp": "20260921-070019",
+  "run": 1,
+  "prompt_hash": "5417369d",
+  "testset": {
+    "file": "testset.jsonl",
+    "sha": "702ca078",
+    "n": 66
+  },
+  "note": "同供应商第二模型（推理模型）"
+}
