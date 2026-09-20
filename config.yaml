@@ -1,0 +1,83 @@
+# SEA Credit Radar 配置
+db_path: data/radar.db
+timezone_offset_hours: 8        # SGT，无夏令时，直接用固定偏移
+
+countries: [ID, PH, SG, VN]
+
+fetch:
+  window_hours: 48              # 只保留此时间窗内的条目
+  concurrency: 8
+  timeout_seconds: 20
+  # 站点页面噪声（监管官网 site: 查询会返回这类页面）
+  title_blocklist:
+    - "job details"
+    - "internship"
+    - "directory"
+    - "^see all"
+    - "^sign in"
+    - '^-?\s*eservices'
+    - '^-?\s*Bangko Sentral ng Pilipinas$'
+    - "e-learning academy"
+    - "^buy .* in singapore"
+
+dedupe:
+  simhash_max_distance: 3       # 标题 SimHash 汉明距离 <= 此值视为近似重复
+  jaccard_threshold: 0.6        # 或标题词集 Jaccard >= 此值视为近似重复
+  event_merge_threshold: 0.75   # 与既有事件相似度 >= 此值：直接并入该事件，不再调用模型
+  event_candidate_threshold: 0.3  # 介于两者之间：作为候选事件交给模型判断是否为「进展更新」
+  event_lookback_days: 30
+
+extract:
+  batch_size: 8                 # 每次模型调用处理的条目数
+  max_items_per_run: 150        # 单次运行上限，控制成本
+
+enrich:
+  confidence_below: 0.6         # category=regulation 或 confidence 低于此值时深度解读
+  max_fulltext_chars: 6000
+
+notify:
+  method: none                  # serverchan | email | none
+
+# tier: 1 = 监管机构（高可信），2 = 主流媒体，3 = 聚合搜索
+# 注：OJK / BSP / MAS 官网没有可用的公开 RSS（已实测 404 或返回 HTML），
+# 因此用 Google News 的 site: 限定查询获取其官网发布内容，并标为 tier 1。
+# 监管机构发布频率低，单独给 7 天窗口（靠 URL 去重，不会重复处理）。
+# 查询词刻意放宽：过窄的组合查询在 48h 内常常 0 条（实测），噪声交给 extract 的相关性判断过滤。
+feeds:
+  # ---- 监管机构官网（site: 限定）----
+  - {name: OJK 官网, country: ID, tier: 1, window_hours: 168, hl: en, gl: ID, ceid: "ID:en",
+     query: "site:ojk.go.id"}
+  - {name: BSP 官网, country: PH, tier: 1, window_hours: 168, hl: en, gl: PH, ceid: "PH:en",
+     query: "site:bsp.gov.ph"}
+  - {name: MAS 官网, country: SG, tier: 1, window_hours: 168, hl: en-SG, gl: SG, ceid: "SG:en",
+     query: "site:mas.gov.sg"}
+  - {name: SBV 官网, country: VN, tier: 1, window_hours: 168, hl: en, gl: VN, ceid: "VN:en",
+     query: "site:sbv.gov.vn"}
+
+  # ---- Google News 主题查询 ----
+  - {name: GN 印尼 OJK, country: ID, tier: 3, hl: en, gl: ID, ceid: "ID:en",
+     query: "OJK"}
+  - {name: GN 印尼 金融科技, country: ID, tier: 3, hl: en, gl: ID, ceid: "ID:en",
+     query: "Indonesia fintech"}
+  - {name: GN 印尼 借贷, country: ID, tier: 3, hl: en, gl: ID, ceid: "ID:en",
+     query: "Indonesia lending OR loan OR paylater OR pinjol"}
+  - {name: GN 菲律宾 BSP, country: PH, tier: 3, hl: en, gl: PH, ceid: "PH:en",
+     query: "BSP Philippines"}
+  - {name: GN 菲律宾 金融科技借贷, country: PH, tier: 3, hl: en, gl: PH, ceid: "PH:en",
+     query: "Philippines fintech OR lending OR loan"}
+  - {name: GN 菲律宾 数字银行, country: PH, tier: 3, hl: en, gl: PH, ceid: "PH:en",
+     query: "GCash loan OR GLoan OR Tonik OR SeaBank Philippines"}
+  - {name: GN 新加坡 MAS, country: SG, tier: 3, hl: en-SG, gl: SG, ceid: "SG:en",
+     query: "MAS Singapore"}
+  - {name: GN 新加坡 金融科技信贷, country: SG, tier: 3, hl: en-SG, gl: SG, ceid: "SG:en",
+     query: "Singapore fintech OR lending OR credit"}
+  - {name: GN 越南 金融科技信贷, country: VN, tier: 3, hl: en, gl: VN, ceid: "VN:en",
+     query: "Vietnam fintech OR lending OR credit"}
+  - {name: GN 越南 央行, country: VN, tier: 3, hl: en, gl: VN, ceid: "VN:en",
+     query: "State Bank of Vietnam"}
+  - {name: GN 东南亚 借贷, country: OTHER, tier: 3, hl: en, gl: SG, ceid: "SG:en",
+     query: "Southeast Asia lending OR credit OR BNPL"}
+  - {name: GN 东南亚 金融科技, country: OTHER, tier: 3, hl: en, gl: SG, ceid: "SG:en",
+     query: "Southeast Asia fintech"}
+  - {name: GN 东南亚 平台金融, country: OTHER, tier: 3, hl: en, gl: SG, ceid: "SG:en",
+     query: "Grab OR GoTo OR Sea Limited financial services"}

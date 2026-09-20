@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+data/*.db
+data/*.db-journal
+# 用户曾用「以 key 命名的空文件夹」传递密钥，防止误提交
+sk-*/
