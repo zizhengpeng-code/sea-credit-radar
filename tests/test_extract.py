@@ -9,28 +9,16 @@ from radar.llm import LLMClient, LLMError
 from radar.pipeline import process
 from radar.prompts import EXTRACT_SYSTEM, build_extract_prompt
 
-from conftest import make_item
+from conftest import FakeLLM, make_item
+
+ENRICH_OK = {"policy_points": ["日利率上限 0.3%"], "effective_date": None,
+             "business_impact": "压缩 BNPL 定价空间", "category": "regulation",
+             "impact_stage": ["pricing"], "confidence": 0.9}
 
 GOOD = {"idx": 0, "relevant": True, "country": "ID", "category": "regulation",
         "entities": ["OJK", "OJK", "Kredivo"], "headline_cn": "OJK 将 Paylater 日利率上限定为 0.3%",
         "why_it_matters": "直接压缩印尼 BNPL 产品定价空间", "impact_stage": ["pricing", "pricing"],
         "effective_date": "2026-12-01", "confidence": 0.85}
-
-
-class FakeLLM:
-    """按预设返回结果，绕过网络；记录收到的 prompt。"""
-
-    def __init__(self, responses):
-        self.responses = list(responses)
-        self.prompts = []
-        self.model = "fake"
-
-    def complete(self, prompt, system, schema, *, stage="llm", prompt_version=""):
-        self.prompts.append(prompt)
-        r = self.responses.pop(0)
-        if isinstance(r, Exception):
-            raise r
-        return schema.model_validate(r).model_dump(mode="json")
 
 
 def test_relevant_requires_core_fields():
@@ -111,10 +99,11 @@ def test_process_creates_event_filters_and_fails(store, cfg):
     c = make_item("Another item", url="https://a.com/3", hours_ago=5)
     store.add_raw_items([a, b, c])
     cfg["extract"] = {"batch_size": 8}
-    llm = FakeLLM([{"results": [GOOD, {"idx": 1, "relevant": False}]}])  # 第 3 条（idx 2）未返回
-    # 排序 tier asc：a(tier1), 然后 b, c
-    stats = process(cfg, store, llm, dt.date(2026, 9, 21))
-    assert stats == {"processed": 3, "filtered": 1, "events_new": 1, "failed": 1}
+    llm = FakeLLM([{"results": [GOOD, {"idx": 1, "relevant": False}]},  # 第 3 条（idx 2）未返回
+                   ENRICH_OK])  # GOOD 是监管类事件，会触发 enrich
+    stats = process(cfg, store, llm, dt.date(2026, 9, 21), fetch_text=lambda url, **kw: None)
+    assert stats == {"processed": 3, "filtered": 1, "events_new": 1, "updates": 0,
+                     "merged_sources": 0, "failed": 1, "enriched": 1}
     ev = store.recent_events(1, dt.date(2026, 9, 21))[0]
     assert ev.category == "regulation" and ev.country == "ID"
     assert ev.effective_date == dt.date(2026, 12, 1) and len(ev.sources) == 1

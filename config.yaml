@@ -22,9 +22,8 @@ fetch:
 
 dedupe:
   simhash_max_distance: 3       # 标题 SimHash 汉明距离 <= 此值视为近似重复
-  jaccard_threshold: 0.6        # 或标题词集 Jaccard >= 此值视为近似重复
-  event_merge_threshold: 0.75   # 与既有事件相似度 >= 此值：直接并入该事件，不再调用模型
-  event_candidate_threshold: 0.3  # 介于两者之间：作为候选事件交给模型判断是否为「进展更新」
+  jaccard_threshold: 0.6        # 或标题词集 Jaccard >= 此值视为近似重复 -> 并入既有条目/事件的来源，不调用模型
+  event_candidate_threshold: 0.3  # [0.3, 0.6) 区间：相似但不算重复，作为候选事件交给模型判断是否为「进展更新」
   event_lookback_days: 30
 
 extract:

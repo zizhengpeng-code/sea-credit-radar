@@ -126,19 +126,29 @@ async def fetch_all(cfg: dict[str, Any], window_hours: float | None = None,
 
 
 # ---------- 正文提取（enrich 分支使用）----------
-def fetch_fulltext(url: str, timeout: float = 20, max_chars: int = 6000) -> str | None:
-    """抓取页面并用 trafilatura 提取正文；失败返回 None（调用方回退到标题+摘要）。
+def resolve_google_news(url: str) -> str | None:
+    """Google News 的 RSS 链接是加密跳转页，用 googlenewsdecoder 解出原文链接；失败返回 None。"""
+    try:
+        from googlenewsdecoder import gnewsdecoder
 
-    Google News 的 RSS 链接是跳转页，跟随重定向后若仍停留在 news.google.com，
-    说明拿不到原文（其解码需要额外请求，这里不做），直接放弃。
-    """
+        d = gnewsdecoder(url, interval=0)
+        return d.get("decoded_url") if d.get("success") else None
+    except Exception as exc:
+        log.info("gnews decode failed for %s: %s", url, exc)
+        return None
+
+
+def fetch_fulltext(url: str, timeout: float = 20, max_chars: int = 6000) -> str | None:
+    """抓取页面并用 trafilatura 提取正文；任何一步失败返回 None（调用方回退到标题）。"""
     import trafilatura
 
+    if "news.google.com" in url:
+        url = resolve_google_news(url) or ""
+        if not url:
+            return None
     try:
         r = httpx.get(url, headers={"User-Agent": UA}, follow_redirects=True, timeout=timeout)
         r.raise_for_status()
-        if "news.google.com" in str(r.url):
-            return None
         text = trafilatura.extract(r.text, include_comments=False, include_tables=False)
         return text[:max_chars] if text else None
     except Exception as exc:

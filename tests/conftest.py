@@ -42,3 +42,21 @@ def cfg():
             {"name": "F2", "country": "PH", "tier": 1, "query": "site:bsp.gov.ph credit"},
         ],
     }
+
+
+class FakeLLM:
+    """按预设依次返回结果，绕过网络；记录收到的 prompt 与 stage。"""
+
+    def __init__(self, responses):
+        self.responses = list(responses)
+        self.prompts = []
+        self.stages = []
+        self.model = "fake"
+
+    def complete(self, prompt, system, schema, *, stage="llm", prompt_version=""):
+        self.prompts.append(prompt)
+        self.stages.append(stage)
+        r = self.responses.pop(0)
+        if isinstance(r, Exception):
+            raise r
+        return schema.model_validate(r).model_dump(mode="json")

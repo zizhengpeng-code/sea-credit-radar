@@ -142,6 +142,22 @@ def dedupe_items(
 
 
 # ---------- 事件匹配 ----------
+OVERLAP_WEIGHT = 0.7
+
+
+def candidate_score(a: list[str], b: list[str]) -> float:
+    """候选检索分数，偏召回（最终是否同一事件由模型裁决）。
+
+    纯 Jaccard 对「短标题 vs 长标题」的后续报道打分偏低（实测 Grab/Atome 后续报道仅 0.23，
+    被漏掉），所以再取重叠系数（交集 / 较短者）加权后的值；至少共享 2 个词，避免单词误配。
+    """
+    sa, sb = set(a), set(b)
+    shared = len(sa & sb)
+    if shared < 2:
+        return 0.0
+    return max(jaccard(sa, sb), OVERLAP_WEIGHT * shared / min(len(sa), len(sb)))
+
+
 def match_events(
     title: str,
     event_titles: dict[str, list[str]],
@@ -151,7 +167,7 @@ def match_events(
     toks = tokenize(title)
     scored = []
     for eid, titles in event_titles.items():
-        best = max((jaccard(toks, tokenize(t)) for t in titles), default=0.0)
+        best = max((candidate_score(toks, tokenize(t)) for t in titles), default=0.0)
         if best >= candidate_threshold:
             scored.append((eid, best))
     return sorted(scored, key=lambda x: -x[1])

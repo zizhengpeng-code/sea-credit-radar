@@ -86,6 +86,20 @@ def test_match_events_ranks_by_similarity():
     assert all(eid != "e2" for eid, _ in res)
 
 
+def test_match_events_recalls_short_followup_of_long_title():
+    """回归：Jaccard 只有 0.23 的后续报道也必须进入候选（真实数据里曾被漏掉）。"""
+    events = {"grab": ["Grab’s acquisition of Atome signals need for wider ecosystem play for BNPL players"]}
+    assert title_similarity("Grab completes Atome acquisition after regulator nod", events["grab"][0]) < 0.3
+    res = match_events("Grab completes Atome acquisition after regulator nod", events, 0.3)
+    assert [eid for eid, _ in res] == ["grab"]
+
+
+def test_match_events_needs_two_shared_tokens():
+    events = {"e": ["OJK fines lender over data breach"]}
+    assert match_events("OJK", events, 0.3) == []
+    assert match_events("Weather in Jakarta today OJK", events, 0.3) == []  # 只共享 1 个词
+
+
 def test_title_similarity_bounds():
     assert title_similarity("ojk lending rules", "ojk lending rules") == 1.0
     assert 0 <= title_similarity("OJK rules", "Grab funding") <= 1

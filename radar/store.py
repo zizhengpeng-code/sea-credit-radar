@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS raw_items (
     country_hint TEXT DEFAULT 'OTHER',
     tier         INTEGER DEFAULT 3,
     snippet      TEXT DEFAULT '',
-    status       TEXT NOT NULL DEFAULT 'new',   -- new | linked | filtered | failed
+    status       TEXT NOT NULL DEFAULT 'new',   -- new | linked | filtered | failed | duplicate
     event_id     TEXT,
     note         TEXT DEFAULT ''
 );
@@ -140,6 +140,20 @@ class Store:
             (status, event_id, note, item_id),
         )
         self.conn.commit()
+
+    def item_event_id(self, item_id: str) -> str | None:
+        row = self.conn.execute("SELECT event_id FROM raw_items WHERE id=?", (item_id,)).fetchone()
+        return row["event_id"] if row else None
+
+    def set_item_event(self, item_id: str, event_id: str) -> None:
+        self.conn.execute("UPDATE raw_items SET event_id=? WHERE id=?", (event_id, item_id))
+        self.conn.commit()
+
+    def duplicates_of(self, item_id: str) -> list[RawItem]:
+        """被判定为 item_id 近似重复而丢弃的条目（note 指向 item_id）。"""
+        rows = self.conn.execute(
+            "SELECT * FROM raw_items WHERE status='duplicate' AND note=?", (item_id,)).fetchall()
+        return [self._raw(r) for r in rows]
 
     def known_titles(self, days: int) -> list[tuple[str, str]]:
         """近 days 天内已入库条目的 (id, title)，用于跨批次去重。"""

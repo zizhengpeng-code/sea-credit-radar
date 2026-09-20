@@ -72,3 +72,41 @@ def build_extract_prompt(items: list[dict], candidates: list[dict] | None = None
     lines.append('请输出 {"results": [...]}，共 %d 个结果，idx 为 %s。' % (
         len(items), ", ".join(str(i["idx"]) for i in items)))
     return "\n".join(lines)
+
+
+ENRICH_VERSION = "enrich-v1"
+
+ENRICH_SYSTEM = """你是东南亚消费信贷市场分析师，服务对象是信贷策略与产品团队。
+你会拿到一个已初步归类的事件，以及其新闻原文（或仅标题）。请做深度解读。
+
+只输出一个 JSON 对象，禁止任何前言、解释或 Markdown 代码块。字段：
+{
+  "policy_points": ["政策/事件要点，每条 40 字以内，最多 5 条，中文"],
+  "effective_date": "YYYY-MM-DD 或 null（原文明确写出具体日期才填）",
+  "business_impact": "对信贷业务的具体影响，100 字以内：影响哪个环节、方向（收紧/放松/成本上升等）、涉及哪类机构或产品；有数字就写数字",
+  "category": "regulation | product | funding | market | risk",
+  "impact_stage": ["acquisition | underwriting | limit | pricing | collection，可多选，无明确影响用 []"],
+  "confidence": 0 到 1
+}
+
+规则：
+- 只依据给定材料，原文没写的不要补充；要点里没有依据的写「原文未说明」而不是猜
+- 若材料只有标题（没有原文），confidence 不得超过 0.6
+- 阅读原文后，如果初步归类的 category 或 impact_stage 有误，请直接给出修正后的值
+- impact_stage 定义：acquisition=获客（营销、渠道、推广限制）；underwriting=准入（风控规则、数据源、KYC、征信、准入资质）；limit=额度；pricing=定价（利率、费用、APR 上限）；collection=贷后（催收、坏账、投诉）"""
+
+
+def build_enrich_prompt(ev: dict, fulltext: str | None) -> str:
+    lines = [
+        "## 初步归类",
+        f'国家: {ev["country"]} | 类别: {ev["category"]} | 影响环节: {ev["impact_stage"]} | 置信度: {ev["confidence"]}',
+        f'摘要: {ev["headline_cn"]}',
+        "## 相关报道标题",
+        *[f"- {t}" for t in ev["titles"][:5]],
+        "",
+    ]
+    if fulltext:
+        lines += ["## 原文", fulltext]
+    else:
+        lines += ["## 原文", "（未能获取原文，只有上面的标题。请严格遵守「只有标题时 confidence 不得超过 0.6」）"]
+    return "\n".join(lines)
