@@ -1,0 +1,576 @@
+<svg class="rich-terminal" viewBox="0 0 1238 3197.6" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-946635163-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-946635163-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-946635163-r1 { fill: #c5c8c6 }
+.terminal-946635163-r2 { fill: #c5c8c6;font-weight: bold;text-decoration: underline; }
+.terminal-946635163-r3 { fill: #98729f }
+.terminal-946635163-r4 { fill: #98729f;text-decoration: underline; }
+.terminal-946635163-r5 { fill: #98729f;font-weight: bold }
+.terminal-946635163-r6 { fill: #c5c8c6;font-weight: bold }
+.terminal-946635163-r7 { fill: #608ab1;text-decoration: underline; }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-946635163-clip-terminal">
+      <rect x="0" y="0" width="1219.0" height="3146.6" />
+    </clipPath>
+    <clipPath id="terminal-946635163-line-0">
+    <rect x="0" y="1.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-1">
+    <rect x="0" y="25.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-2">
+    <rect x="0" y="50.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-3">
+    <rect x="0" y="74.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-4">
+    <rect x="0" y="99.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-5">
+    <rect x="0" y="123.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-6">
+    <rect x="0" y="147.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-7">
+    <rect x="0" y="172.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-8">
+    <rect x="0" y="196.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-9">
+    <rect x="0" y="221.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-10">
+    <rect x="0" y="245.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-11">
+    <rect x="0" y="269.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-12">
+    <rect x="0" y="294.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-13">
+    <rect x="0" y="318.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-14">
+    <rect x="0" y="343.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-15">
+    <rect x="0" y="367.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-16">
+    <rect x="0" y="391.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-17">
+    <rect x="0" y="416.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-18">
+    <rect x="0" y="440.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-19">
+    <rect x="0" y="465.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-20">
+    <rect x="0" y="489.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-21">
+    <rect x="0" y="513.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-22">
+    <rect x="0" y="538.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-23">
+    <rect x="0" y="562.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-24">
+    <rect x="0" y="587.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-25">
+    <rect x="0" y="611.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-26">
+    <rect x="0" y="635.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-27">
+    <rect x="0" y="660.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-28">
+    <rect x="0" y="684.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-29">
+    <rect x="0" y="709.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-30">
+    <rect x="0" y="733.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-31">
+    <rect x="0" y="757.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-32">
+    <rect x="0" y="782.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-33">
+    <rect x="0" y="806.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-34">
+    <rect x="0" y="831.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-35">
+    <rect x="0" y="855.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-36">
+    <rect x="0" y="879.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-37">
+    <rect x="0" y="904.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-38">
+    <rect x="0" y="928.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-39">
+    <rect x="0" y="953.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-40">
+    <rect x="0" y="977.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-41">
+    <rect x="0" y="1001.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-42">
+    <rect x="0" y="1026.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-43">
+    <rect x="0" y="1050.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-44">
+    <rect x="0" y="1075.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-45">
+    <rect x="0" y="1099.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-46">
+    <rect x="0" y="1123.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-47">
+    <rect x="0" y="1148.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-48">
+    <rect x="0" y="1172.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-49">
+    <rect x="0" y="1197.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-50">
+    <rect x="0" y="1221.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-51">
+    <rect x="0" y="1245.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-52">
+    <rect x="0" y="1270.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-53">
+    <rect x="0" y="1294.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-54">
+    <rect x="0" y="1319.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-55">
+    <rect x="0" y="1343.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-56">
+    <rect x="0" y="1367.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-57">
+    <rect x="0" y="1392.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-58">
+    <rect x="0" y="1416.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-59">
+    <rect x="0" y="1441.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-60">
+    <rect x="0" y="1465.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-61">
+    <rect x="0" y="1489.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-62">
+    <rect x="0" y="1514.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-63">
+    <rect x="0" y="1538.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-64">
+    <rect x="0" y="1563.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-65">
+    <rect x="0" y="1587.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-66">
+    <rect x="0" y="1611.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-67">
+    <rect x="0" y="1636.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-68">
+    <rect x="0" y="1660.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-69">
+    <rect x="0" y="1685.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-70">
+    <rect x="0" y="1709.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-71">
+    <rect x="0" y="1733.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-72">
+    <rect x="0" y="1758.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-73">
+    <rect x="0" y="1782.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-74">
+    <rect x="0" y="1807.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-75">
+    <rect x="0" y="1831.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-76">
+    <rect x="0" y="1855.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-77">
+    <rect x="0" y="1880.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-78">
+    <rect x="0" y="1904.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-79">
+    <rect x="0" y="1929.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-80">
+    <rect x="0" y="1953.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-81">
+    <rect x="0" y="1977.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-82">
+    <rect x="0" y="2002.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-83">
+    <rect x="0" y="2026.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-84">
+    <rect x="0" y="2051.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-85">
+    <rect x="0" y="2075.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-86">
+    <rect x="0" y="2099.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-87">
+    <rect x="0" y="2124.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-88">
+    <rect x="0" y="2148.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-89">
+    <rect x="0" y="2173.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-90">
+    <rect x="0" y="2197.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-91">
+    <rect x="0" y="2221.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-92">
+    <rect x="0" y="2246.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-93">
+    <rect x="0" y="2270.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-94">
+    <rect x="0" y="2295.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-95">
+    <rect x="0" y="2319.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-96">
+    <rect x="0" y="2343.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-97">
+    <rect x="0" y="2368.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-98">
+    <rect x="0" y="2392.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-99">
+    <rect x="0" y="2417.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-100">
+    <rect x="0" y="2441.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-101">
+    <rect x="0" y="2465.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-102">
+    <rect x="0" y="2490.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-103">
+    <rect x="0" y="2514.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-104">
+    <rect x="0" y="2539.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-105">
+    <rect x="0" y="2563.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-106">
+    <rect x="0" y="2587.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-107">
+    <rect x="0" y="2612.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-108">
+    <rect x="0" y="2636.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-109">
+    <rect x="0" y="2661.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-110">
+    <rect x="0" y="2685.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-111">
+    <rect x="0" y="2709.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-112">
+    <rect x="0" y="2734.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-113">
+    <rect x="0" y="2758.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-114">
+    <rect x="0" y="2783.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-115">
+    <rect x="0" y="2807.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-116">
+    <rect x="0" y="2831.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-117">
+    <rect x="0" y="2856.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-118">
+    <rect x="0" y="2880.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-119">
+    <rect x="0" y="2905.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-120">
+    <rect x="0" y="2929.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-121">
+    <rect x="0" y="2953.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-122">
+    <rect x="0" y="2978.3" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-123">
+    <rect x="0" y="3002.7" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-124">
+    <rect x="0" y="3027.1" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-125">
+    <rect x="0" y="3051.5" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-126">
+    <rect x="0" y="3075.9" width="1220" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-946635163-line-127">
+    <rect x="0" y="3100.3" width="1220" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#292929" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1236" height="3195.6" rx="8"/><text class="terminal-946635163-title" fill="#c5c8c6" text-anchor="middle" x="618" y="27">SEA&#160;Credit&#160;Radar&#160;2026-09-21</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-946635163-clip-terminal)">
+    
+    <g class="terminal-946635163-matrix">
+    <text class="terminal-946635163-r2" x="427" y="20" textLength="353.8" clip-path="url(#terminal-946635163-line-0)">SEA&#160;Credit&#160;Radar&#160;·&#160;2026-09-21</text><text class="terminal-946635163-r1" x="1220" y="20" textLength="12.2" clip-path="url(#terminal-946635163-line-0)">
+</text><text class="terminal-946635163-r1" x="1220" y="44.4" textLength="12.2" clip-path="url(#terminal-946635163-line-1)">
+</text><text class="terminal-946635163-r3" x="0" y="68.8" textLength="24.4" clip-path="url(#terminal-946635163-line-2)">▌&#160;</text><text class="terminal-946635163-r3" x="24.4" y="68.8" textLength="817.4" clip-path="url(#terminal-946635163-line-2)">新事件&#160;14&#160;·&#160;进展更新&#160;0&#160;·&#160;模型&#160;deepseek-chat&#160;·&#160;tokens&#160;60640+5173&#160;·&#160;成本&#160;$0.0192</text><text class="terminal-946635163-r1" x="1220" y="68.8" textLength="12.2" clip-path="url(#terminal-946635163-line-2)">
+</text><text class="terminal-946635163-r1" x="1220" y="93.2" textLength="12.2" clip-path="url(#terminal-946635163-line-3)">
+</text><text class="terminal-946635163-r4" x="0" y="117.6" textLength="61" clip-path="url(#terminal-946635163-line-4)">🆕&#160;新事件</text><text class="terminal-946635163-r1" x="1220" y="117.6" textLength="12.2" clip-path="url(#terminal-946635163-line-4)">
+</text><text class="terminal-946635163-r1" x="1220" y="142" textLength="12.2" clip-path="url(#terminal-946635163-line-5)">
+</text><text class="terminal-946635163-r5" x="0" y="166.4" textLength="390.4" clip-path="url(#terminal-946635163-line-6)">1.&#160;【菲律宾·监管】菲律宾央行要求停用短信OTP，改用生物识别</text><text class="terminal-946635163-r1" x="1220" y="166.4" textLength="12.2" clip-path="url(#terminal-946635163-line-6)">
+</text><text class="terminal-946635163-r1" x="1220" y="190.8" textLength="12.2" clip-path="url(#terminal-946635163-line-7)">
+</text><text class="terminal-946635163-r6" x="0" y="215.2" textLength="36.6" clip-path="url(#terminal-946635163-line-8)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="215.2" textLength="61" clip-path="url(#terminal-946635163-line-8)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="215.2" textLength="744.2" clip-path="url(#terminal-946635163-line-8)">：登录与交易验证方式变更，影响KYC、反欺诈与放款验证流程&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="215.2" textLength="12.2" clip-path="url(#terminal-946635163-line-8)">
+</text><text class="terminal-946635163-r6" x="0" y="239.6" textLength="36.6" clip-path="url(#terminal-946635163-line-9)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="239.6" textLength="963.8" clip-path="url(#terminal-946635163-line-9)">影响环节：准入、获客&#160;｜&#160;置信度&#160;0.85&#160;｜&#160;涉及：BSP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="239.6" textLength="12.2" clip-path="url(#terminal-946635163-line-9)">
+</text><text class="terminal-946635163-r6" x="0" y="264" textLength="36.6" clip-path="url(#terminal-946635163-line-10)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="264" textLength="48.8" clip-path="url(#terminal-946635163-line-10)">深度解读</text><text class="terminal-946635163-r1" x="134.2" y="264" textLength="1073.6" clip-path="url(#terminal-946635163-line-10)">：&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="264" textLength="12.2" clip-path="url(#terminal-946635163-line-10)">
+</text><text class="terminal-946635163-r6" x="36.6" y="288.4" textLength="36.6" clip-path="url(#terminal-946635163-line-11)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="288.4" textLength="866.2" clip-path="url(#terminal-946635163-line-11)">BSP第1213号通告要求月线上交易额超7500万比索的机构停用短信OTP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="288.4" textLength="12.2" clip-path="url(#terminal-946635163-line-11)">
+</text><text class="terminal-946635163-r6" x="36.6" y="312.8" textLength="36.6" clip-path="url(#terminal-946635163-line-12)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="312.8" textLength="780.8" clip-path="url(#terminal-946635163-line-12)">高风险交易须改用设备绑定多因素认证，如服务器端生物识别或密钥&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="312.8" textLength="12.2" clip-path="url(#terminal-946635163-line-12)">
+</text><text class="terminal-946635163-r6" x="36.6" y="337.2" textLength="36.6" clip-path="url(#terminal-946635163-line-13)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="337.2" textLength="866.2" clip-path="url(#terminal-946635163-line-13)">适用对象含数字银行、大型综合商业银行及电子钱包&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="337.2" textLength="12.2" clip-path="url(#terminal-946635163-line-13)">
+</text><text class="terminal-946635163-r6" x="36.6" y="361.6" textLength="36.6" clip-path="url(#terminal-946635163-line-14)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="361.6" textLength="829.6" clip-path="url(#terminal-946635163-line-14)">合规机构可依AFASA免责，未按期部署须自行全额赔付欺诈受害者&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="361.6" textLength="12.2" clip-path="url(#terminal-946635163-line-14)">
+</text><text class="terminal-946635163-r6" x="36.6" y="386" textLength="36.6" clip-path="url(#terminal-946635163-line-15)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="386" textLength="829.6" clip-path="url(#terminal-946635163-line-15)">低风险操作如余额查询仍可用短信提醒，转账等须生物识别&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="386" textLength="12.2" clip-path="url(#terminal-946635163-line-15)">
+</text><text class="terminal-946635163-r6" x="36.6" y="410.4" textLength="36.6" clip-path="url(#terminal-946635163-line-16)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="410.4" textLength="597.8" clip-path="url(#terminal-946635163-line-16)">业务影响：菲律宾信贷机构获客与放款环节的短信OTP验证被强制替换为服务器端生物识别，合规成本上升&#160;</text><text class="terminal-946635163-r1" x="1220" y="410.4" textLength="12.2" clip-path="url(#terminal-946635163-line-16)">
+</text><text class="terminal-946635163-r1" x="73.2" y="434.8" textLength="671" clip-path="url(#terminal-946635163-line-17)">；未按期部署的机构须自担欺诈赔付，逾期风险与运营成本双增，利好生物识别供应商。&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="434.8" textLength="12.2" clip-path="url(#terminal-946635163-line-17)">
+</text><text class="terminal-946635163-r6" x="0" y="459.2" textLength="36.6" clip-path="url(#terminal-946635163-line-18)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="459.2" textLength="36.6" clip-path="url(#terminal-946635163-line-18)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="459.2" textLength="146.4" clip-path="url(#terminal-946635163-line-18)">Explained&#160;PH</text><text class="terminal-946635163-r1" x="1220" y="459.2" textLength="12.2" clip-path="url(#terminal-946635163-line-18)">
+</text><text class="terminal-946635163-r1" x="1220" y="483.6" textLength="12.2" clip-path="url(#terminal-946635163-line-19)">
+</text><text class="terminal-946635163-r5" x="0" y="508" textLength="256.2" clip-path="url(#terminal-946635163-line-20)">2.&#160;【越南·监管】越南放宽小企业信贷准入</text><text class="terminal-946635163-r1" x="1220" y="508" textLength="12.2" clip-path="url(#terminal-946635163-line-20)">
+</text><text class="terminal-946635163-r1" x="1220" y="532.4" textLength="12.2" clip-path="url(#terminal-946635163-line-21)">
+</text><text class="terminal-946635163-r6" x="0" y="556.8" textLength="36.6" clip-path="url(#terminal-946635163-line-22)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="556.8" textLength="61" clip-path="url(#terminal-946635163-line-22)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="556.8" textLength="756.4" clip-path="url(#terminal-946635163-line-22)">：小微经营贷准入放宽，或影响消费信贷客群与风控标准&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="556.8" textLength="12.2" clip-path="url(#terminal-946635163-line-22)">
+</text><text class="terminal-946635163-r6" x="0" y="581.2" textLength="36.6" clip-path="url(#terminal-946635163-line-23)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="581.2" textLength="963.8" clip-path="url(#terminal-946635163-line-23)">影响环节：获客、准入&#160;｜&#160;生效：2026-09-18&#160;｜&#160;置信度&#160;0.85&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="581.2" textLength="12.2" clip-path="url(#terminal-946635163-line-23)">
+</text><text class="terminal-946635163-r6" x="0" y="605.6" textLength="36.6" clip-path="url(#terminal-946635163-line-24)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="605.6" textLength="48.8" clip-path="url(#terminal-946635163-line-24)">深度解读</text><text class="terminal-946635163-r1" x="134.2" y="605.6" textLength="1073.6" clip-path="url(#terminal-946635163-line-24)">：&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="605.6" textLength="12.2" clip-path="url(#terminal-946635163-line-24)">
+</text><text class="terminal-946635163-r6" x="36.6" y="630" textLength="36.6" clip-path="url(#terminal-946635163-line-25)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="630" textLength="744.2" clip-path="url(#terminal-946635163-line-25)">副总理签署第1809号决定，批准强化企业（尤其中小企业）融资渠道的国家方案&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="630" textLength="12.2" clip-path="url(#terminal-946635163-line-25)">
+</text><text class="terminal-946635163-r6" x="36.6" y="654.4" textLength="36.6" clip-path="url(#terminal-946635163-line-26)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="654.4" textLength="732" clip-path="url(#terminal-946635163-line-26)">完善信贷法律框架，允许银行及信贷机构扩大对企业放贷，改进保理业务规则&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="654.4" textLength="12.2" clip-path="url(#terminal-946635163-line-26)">
+</text><text class="terminal-946635163-r6" x="36.6" y="678.8" textLength="36.6" clip-path="url(#terminal-946635163-line-27)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="678.8" textLength="756.4" clip-path="url(#terminal-946635163-line-27)">银行须简化贷款流程，更多依据经营计划、产业链及支付现金流数据放贷&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="678.8" textLength="12.2" clip-path="url(#terminal-946635163-line-27)">
+</text><text class="terminal-946635163-r6" x="36.6" y="703.2" textLength="36.6" clip-path="url(#terminal-946635163-line-28)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="703.2" textLength="768.6" clip-path="url(#terminal-946635163-line-28)">在国家企业信息系统中建设中小企业专属数据库，供贷款机构评估信用&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="703.2" textLength="12.2" clip-path="url(#terminal-946635163-line-28)">
+</text><text class="terminal-946635163-r6" x="36.6" y="727.6" textLength="36.6" clip-path="url(#terminal-946635163-line-29)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="727.6" textLength="866.2" clip-path="url(#terminal-946635163-line-29)">目标到2030年至少三家国有商业银行进入亚洲总资产百强&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="727.6" textLength="12.2" clip-path="url(#terminal-946635163-line-29)">
+</text><text class="terminal-946635163-r6" x="36.6" y="752" textLength="36.6" clip-path="url(#terminal-946635163-line-30)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="752" textLength="597.8" clip-path="url(#terminal-946635163-line-30)">业务影响：越南放宽中小企业信贷准入，银行可依据现金流与产业链数据放贷并多元化抵押要求，利好SME&#160;</text><text class="terminal-946635163-r1" x="1220" y="752" textLength="12.2" clip-path="url(#terminal-946635163-line-30)">
+</text><text class="terminal-946635163-r1" x="73.2" y="776.4" textLength="683.2" clip-path="url(#terminal-946635163-line-31)">贷款获客与风控数据源扩展；同时强化银行监管与弱机构重组，长期或推高合规成本。&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="776.4" textLength="12.2" clip-path="url(#terminal-946635163-line-31)">
+</text><text class="terminal-946635163-r6" x="0" y="800.8" textLength="36.6" clip-path="url(#terminal-946635163-line-32)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="800.8" textLength="36.6" clip-path="url(#terminal-946635163-line-32)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="800.8" textLength="85.4" clip-path="url(#terminal-946635163-line-32)">DTiNews</text><text class="terminal-946635163-r1" x="1220" y="800.8" textLength="12.2" clip-path="url(#terminal-946635163-line-32)">
+</text><text class="terminal-946635163-r1" x="1220" y="825.2" textLength="12.2" clip-path="url(#terminal-946635163-line-33)">
+</text><text class="terminal-946635163-r5" x="0" y="849.6" textLength="353.8" clip-path="url(#terminal-946635163-line-34)">3.&#160;【越南·监管】越南处置弱质信贷机构并扩大企业融资渠道</text><text class="terminal-946635163-r1" x="1220" y="849.6" textLength="12.2" clip-path="url(#terminal-946635163-line-34)">
+</text><text class="terminal-946635163-r1" x="1220" y="874" textLength="12.2" clip-path="url(#terminal-946635163-line-35)">
+</text><text class="terminal-946635163-r6" x="0" y="898.4" textLength="36.6" clip-path="url(#terminal-946635163-line-36)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="898.4" textLength="61" clip-path="url(#terminal-946635163-line-36)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="898.4" textLength="780.8" clip-path="url(#terminal-946635163-line-36)">：信贷机构整肃影响放贷主体格局与资金来源稳定性&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="898.4" textLength="12.2" clip-path="url(#terminal-946635163-line-36)">
+</text><text class="terminal-946635163-r6" x="0" y="922.8" textLength="36.6" clip-path="url(#terminal-946635163-line-37)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="922.8" textLength="1012.6" clip-path="url(#terminal-946635163-line-37)">影响环节：获客、准入&#160;｜&#160;置信度&#160;0.75&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="922.8" textLength="12.2" clip-path="url(#terminal-946635163-line-37)">
+</text><text class="terminal-946635163-r6" x="0" y="947.2" textLength="36.6" clip-path="url(#terminal-946635163-line-38)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="947.2" textLength="48.8" clip-path="url(#terminal-946635163-line-38)">深度解读</text><text class="terminal-946635163-r1" x="134.2" y="947.2" textLength="1073.6" clip-path="url(#terminal-946635163-line-38)">：&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="947.2" textLength="12.2" clip-path="url(#terminal-946635163-line-38)">
+</text><text class="terminal-946635163-r6" x="36.6" y="971.6" textLength="36.6" clip-path="url(#terminal-946635163-line-39)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="971.6" textLength="878.4" clip-path="url(#terminal-946635163-line-39)">2026年9月18日总理签发第1809/QD-TTg号决定，批准银行业现代化项目&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="971.6" textLength="12.2" clip-path="url(#terminal-946635163-line-39)">
+</text><text class="terminal-946635163-r6" x="36.6" y="996" textLength="36.6" clip-path="url(#terminal-946635163-line-40)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="996" textLength="890.6" clip-path="url(#terminal-946635163-line-40)">项目含5大观点、3组2030年目标，越央行细化为53项任务&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="996" textLength="12.2" clip-path="url(#terminal-946635163-line-40)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1020.4" textLength="36.6" clip-path="url(#terminal-946635163-line-41)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1020.4" textLength="768.6" clip-path="url(#terminal-946635163-line-41)">处置弱质信贷机构：完善法律框架、坏账处理、为国有控股银行和VAMC增资&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1020.4" textLength="12.2" clip-path="url(#terminal-946635163-line-41)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1044.8" textLength="36.6" clip-path="url(#terminal-946635163-line-42)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1044.8" textLength="841.8" clip-path="url(#terminal-946635163-line-42)">财政部牵头修订中小企业发展法草案，支持中小企业融资&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1044.8" textLength="12.2" clip-path="url(#terminal-946635163-line-42)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1069.2" textLength="36.6" clip-path="url(#terminal-946635163-line-43)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1069.2" textLength="707.6" clip-path="url(#terminal-946635163-line-43)">公安部与央行推动国家人口数据库、电子身份系统对接，多源数据评估借款人信用&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1069.2" textLength="12.2" clip-path="url(#terminal-946635163-line-43)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1093.6" textLength="36.6" clip-path="url(#terminal-946635163-line-44)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1093.6" textLength="573.4" clip-path="url(#terminal-946635163-line-44)">业务影响：政策推动多源数据信用评估与银企对接，利好中小企业信贷获客与准入；弱质机构处置和国有行</text><text class="terminal-946635163-r1" x="1220" y="1093.6" textLength="12.2" clip-path="url(#terminal-946635163-line-44)">
+</text><text class="terminal-946635163-r1" x="73.2" y="1118" textLength="878.4" clip-path="url(#terminal-946635163-line-45)">增资或收紧部分机构放贷能力，行业集中度上升。&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1118" textLength="12.2" clip-path="url(#terminal-946635163-line-45)">
+</text><text class="terminal-946635163-r6" x="0" y="1142.4" textLength="36.6" clip-path="url(#terminal-946635163-line-46)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="1142.4" textLength="36.6" clip-path="url(#terminal-946635163-line-46)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="1142.4" textLength="122" clip-path="url(#terminal-946635163-line-46)">Laodong.vn</text><text class="terminal-946635163-r1" x="1220" y="1142.4" textLength="12.2" clip-path="url(#terminal-946635163-line-46)">
+</text><text class="terminal-946635163-r1" x="1220" y="1166.8" textLength="12.2" clip-path="url(#terminal-946635163-line-47)">
+</text><text class="terminal-946635163-r5" x="0" y="1191.2" textLength="366" clip-path="url(#terminal-946635163-line-48)">4.&#160;【越南·监管】越南政府批准银行系统现代化与信贷准入计划</text><text class="terminal-946635163-r1" x="1220" y="1191.2" textLength="12.2" clip-path="url(#terminal-946635163-line-48)">
+</text><text class="terminal-946635163-r1" x="1220" y="1215.6" textLength="12.2" clip-path="url(#terminal-946635163-line-49)">
+</text><text class="terminal-946635163-r6" x="0" y="1240" textLength="36.6" clip-path="url(#terminal-946635163-line-50)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="1240" textLength="61" clip-path="url(#terminal-946635163-line-50)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="1240" textLength="744.2" clip-path="url(#terminal-946635163-line-50)">：改善企业信贷获取，或影响消费信贷供给与风控数据基础&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1240" textLength="12.2" clip-path="url(#terminal-946635163-line-50)">
+</text><text class="terminal-946635163-r6" x="0" y="1264.4" textLength="36.6" clip-path="url(#terminal-946635163-line-51)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="1264.4" textLength="963.8" clip-path="url(#terminal-946635163-line-51)">影响环节：获客、准入&#160;｜&#160;置信度&#160;0.60&#160;｜&#160;涉及：Government&#160;of&#160;Vietnam&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1264.4" textLength="12.2" clip-path="url(#terminal-946635163-line-51)">
+</text><text class="terminal-946635163-r6" x="0" y="1288.8" textLength="36.6" clip-path="url(#terminal-946635163-line-52)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="1288.8" textLength="48.8" clip-path="url(#terminal-946635163-line-52)">深度解读</text><text class="terminal-946635163-r1" x="134.2" y="1288.8" textLength="1073.6" clip-path="url(#terminal-946635163-line-52)">：&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1288.8" textLength="12.2" clip-path="url(#terminal-946635163-line-52)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1313.2" textLength="36.6" clip-path="url(#terminal-946635163-line-53)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1313.2" textLength="817.4" clip-path="url(#terminal-946635163-line-53)">政府批准银行系统现代化与信贷准入计划，9月18日由副总理签署&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1313.2" textLength="12.2" clip-path="url(#terminal-946635163-line-53)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1337.6" textLength="36.6" clip-path="url(#terminal-946635163-line-54)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1337.6" textLength="829.6" clip-path="url(#terminal-946635163-line-54)">推动央行货币政策更大独立性，从数量型向价格型调控转变&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1337.6" textLength="12.2" clip-path="url(#terminal-946635163-line-54)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1362" textLength="36.6" clip-path="url(#terminal-946635163-line-55)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1362" textLength="902.8" clip-path="url(#terminal-946635163-line-55)">2026-2030年建设集中化银行业数据库，对接国家数据库&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1362" textLength="12.2" clip-path="url(#terminal-946635163-line-55)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1386.4" textLength="36.6" clip-path="url(#terminal-946635163-line-56)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1386.4" textLength="890.6" clip-path="url(#terminal-946635163-line-56)">目标2030年至少30万家中小企业获得信贷机构贷款余额&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1386.4" textLength="12.2" clip-path="url(#terminal-946635163-line-56)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1410.8" textLength="36.6" clip-path="url(#terminal-946635163-line-57)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1410.8" textLength="878.4" clip-path="url(#terminal-946635163-line-57)">要求银行多元化信贷产品、放贷方式与抵押品选择&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1410.8" textLength="12.2" clip-path="url(#terminal-946635163-line-57)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1435.2" textLength="36.6" clip-path="url(#terminal-946635163-line-58)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1435.2" textLength="622.2" clip-path="url(#terminal-946635163-line-58)">业务影响：利好中小企业信贷获客与准入：银行需多元化产品、抵押品与数字化放贷，2030年目标30万家SM</text><text class="terminal-946635163-r1" x="1220" y="1435.2" textLength="12.2" clip-path="url(#terminal-946635163-line-58)">
+</text><text class="terminal-946635163-r1" x="73.2" y="1459.6" textLength="597.8" clip-path="url(#terminal-946635163-line-59)">E有贷款余额；数据基建与价格型货币政策或影响资金成本与定价，但原文未给出具体利率或额度数字。&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1459.6" textLength="12.2" clip-path="url(#terminal-946635163-line-59)">
+</text><text class="terminal-946635163-r6" x="0" y="1484" textLength="36.6" clip-path="url(#terminal-946635163-line-60)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="1484" textLength="36.6" clip-path="url(#terminal-946635163-line-60)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="1484" textLength="268.4" clip-path="url(#terminal-946635163-line-60)">Vietnam&#160;Economic&#160;Times</text><text class="terminal-946635163-r1" x="1220" y="1484" textLength="12.2" clip-path="url(#terminal-946635163-line-60)">
+</text><text class="terminal-946635163-r1" x="1220" y="1508.4" textLength="12.2" clip-path="url(#terminal-946635163-line-61)">
+</text><text class="terminal-946635163-r5" x="0" y="1532.8" textLength="329.4" clip-path="url(#terminal-946635163-line-62)">5.&#160;【菲律宾·监管】菲律宾央行对违规银行高管加重处罚</text><text class="terminal-946635163-r1" x="1220" y="1532.8" textLength="12.2" clip-path="url(#terminal-946635163-line-62)">
+</text><text class="terminal-946635163-r1" x="1220" y="1557.2" textLength="12.2" clip-path="url(#terminal-946635163-line-63)">
+</text><text class="terminal-946635163-r6" x="0" y="1581.6" textLength="36.6" clip-path="url(#terminal-946635163-line-64)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="1581.6" textLength="61" clip-path="url(#terminal-946635163-line-64)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="1581.6" textLength="756.4" clip-path="url(#terminal-946635163-line-64)">：银行合规与放贷资质受约束，影响合作渠道与风控要求&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1581.6" textLength="12.2" clip-path="url(#terminal-946635163-line-64)">
+</text><text class="terminal-946635163-r6" x="0" y="1606" textLength="36.6" clip-path="url(#terminal-946635163-line-65)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="1606" textLength="963.8" clip-path="url(#terminal-946635163-line-65)">影响环节：无明确环节&#160;｜&#160;置信度&#160;0.75&#160;｜&#160;涉及：Bangko&#160;Sentral&#160;ng&#160;Pilipinas&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1606" textLength="12.2" clip-path="url(#terminal-946635163-line-65)">
+</text><text class="terminal-946635163-r6" x="0" y="1630.4" textLength="36.6" clip-path="url(#terminal-946635163-line-66)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="1630.4" textLength="48.8" clip-path="url(#terminal-946635163-line-66)">深度解读</text><text class="terminal-946635163-r1" x="134.2" y="1630.4" textLength="1073.6" clip-path="url(#terminal-946635163-line-66)">：&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1630.4" textLength="12.2" clip-path="url(#terminal-946635163-line-66)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1654.8" textLength="36.6" clip-path="url(#terminal-946635163-line-67)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1654.8" textLength="890.6" clip-path="url(#terminal-946635163-line-67)">BSP发布行政案件处罚规则草案，公众意见截止9月25日&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1654.8" textLength="12.2" clip-path="url(#terminal-946635163-line-67)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1679.2" textLength="36.6" clip-path="url(#terminal-946635163-line-68)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1679.2" textLength="902.8" clip-path="url(#terminal-946635163-line-68)">首次严重违规：停职6个月零1天至1年并严厉警告&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1679.2" textLength="12.2" clip-path="url(#terminal-946635163-line-68)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1703.6" textLength="36.6" clip-path="url(#terminal-946635163-line-69)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1703.6" textLength="890.6" clip-path="url(#terminal-946635163-line-69)">第二次及后续严重违规：免职和/或取消任职资格&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1703.6" textLength="12.2" clip-path="url(#terminal-946635163-line-69)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1728" textLength="36.6" clip-path="url(#terminal-946635163-line-70)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1728" textLength="927.2" clip-path="url(#terminal-946635163-line-70)">轻微违规首次训诫警告，再犯停职1至6个月&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1728" textLength="12.2" clip-path="url(#terminal-946635163-line-70)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1752.4" textLength="36.6" clip-path="url(#terminal-946635163-line-71)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1752.4" textLength="841.8" clip-path="url(#terminal-946635163-line-71)">罚款超10万比索/每日3万比索或非金钱处罚需货币委员会批准&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1752.4" textLength="12.2" clip-path="url(#terminal-946635163-line-71)">
+</text><text class="terminal-946635163-r6" x="36.6" y="1776.8" textLength="36.6" clip-path="url(#terminal-946635163-line-72)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="73.2" y="1776.8" textLength="597.8" clip-path="url(#terminal-946635163-line-72)">业务影响：草案仅约束BSP监管机构及其高管个人的行政处罚程序，未直接改变信贷准入、额度或定价规则&#160;</text><text class="terminal-946635163-r1" x="1220" y="1776.8" textLength="12.2" clip-path="url(#terminal-946635163-line-72)">
+</text><text class="terminal-946635163-r1" x="73.2" y="1801.2" textLength="585.6" clip-path="url(#terminal-946635163-line-73)">；但合规问责加重，银行及放贷机构在高管行为、风控流程上的合规成本上升，间接影响信贷业务治理。&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1801.2" textLength="12.2" clip-path="url(#terminal-946635163-line-73)">
+</text><text class="terminal-946635163-r6" x="0" y="1825.6" textLength="36.6" clip-path="url(#terminal-946635163-line-74)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="1825.6" textLength="36.6" clip-path="url(#terminal-946635163-line-74)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="1825.6" textLength="146.4" clip-path="url(#terminal-946635163-line-74)">Philstar.com</text><text class="terminal-946635163-r1" x="1220" y="1825.6" textLength="12.2" clip-path="url(#terminal-946635163-line-74)">
+</text><text class="terminal-946635163-r1" x="1220" y="1850" textLength="12.2" clip-path="url(#terminal-946635163-line-75)">
+</text><text class="terminal-946635163-r5" x="0" y="1874.4" textLength="500.2" clip-path="url(#terminal-946635163-line-76)">6.&#160;【菲律宾·产品】EastWest&#160;与&#160;Moneymax&#160;合作扩大个人贷款渠道</text><text class="terminal-946635163-r1" x="1220" y="1874.4" textLength="12.2" clip-path="url(#terminal-946635163-line-76)">
+</text><text class="terminal-946635163-r1" x="1220" y="1898.8" textLength="12.2" clip-path="url(#terminal-946635163-line-77)">
+</text><text class="terminal-946635163-r6" x="0" y="1923.2" textLength="36.6" clip-path="url(#terminal-946635163-line-78)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="1923.2" textLength="61" clip-path="url(#terminal-946635163-line-78)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="1923.2" textLength="732" clip-path="url(#terminal-946635163-line-78)">：银行借第三方比价平台获客，影响菲律宾个人贷款渠道竞争&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1923.2" textLength="12.2" clip-path="url(#terminal-946635163-line-78)">
+</text><text class="terminal-946635163-r6" x="0" y="1947.6" textLength="36.6" clip-path="url(#terminal-946635163-line-79)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="1947.6" textLength="988.2" clip-path="url(#terminal-946635163-line-79)">影响环节：获客&#160;｜&#160;置信度&#160;0.70&#160;｜&#160;涉及：EastWest、Moneymax&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="1947.6" textLength="12.2" clip-path="url(#terminal-946635163-line-79)">
+</text><text class="terminal-946635163-r6" x="0" y="1972" textLength="36.6" clip-path="url(#terminal-946635163-line-80)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="1972" textLength="36.6" clip-path="url(#terminal-946635163-line-80)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="1972" textLength="146.4" clip-path="url(#terminal-946635163-line-80)">Philstar.com</text><text class="terminal-946635163-r1" x="1220" y="1972" textLength="12.2" clip-path="url(#terminal-946635163-line-80)">
+</text><text class="terminal-946635163-r1" x="1220" y="1996.4" textLength="12.2" clip-path="url(#terminal-946635163-line-81)">
+</text><text class="terminal-946635163-r5" x="0" y="2020.8" textLength="341.6" clip-path="url(#terminal-946635163-line-82)">7.&#160;【菲律宾·产品】GSIS&#160;提高灾民紧急贷款援助额度</text><text class="terminal-946635163-r1" x="1220" y="2020.8" textLength="12.2" clip-path="url(#terminal-946635163-line-82)">
+</text><text class="terminal-946635163-r1" x="1220" y="2045.2" textLength="12.2" clip-path="url(#terminal-946635163-line-83)">
+</text><text class="terminal-946635163-r6" x="0" y="2069.6" textLength="36.6" clip-path="url(#terminal-946635163-line-84)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="2069.6" textLength="61" clip-path="url(#terminal-946635163-line-84)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="2069.6" textLength="805.2" clip-path="url(#terminal-946635163-line-84)">：政府贷款额度上调，或分流部分消费信贷需求&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2069.6" textLength="12.2" clip-path="url(#terminal-946635163-line-84)">
+</text><text class="terminal-946635163-r6" x="0" y="2094" textLength="36.6" clip-path="url(#terminal-946635163-line-85)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2094" textLength="1000.4" clip-path="url(#terminal-946635163-line-85)">影响环节：额度&#160;｜&#160;置信度&#160;0.60&#160;｜&#160;涉及：GSIS&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2094" textLength="12.2" clip-path="url(#terminal-946635163-line-85)">
+</text><text class="terminal-946635163-r6" x="0" y="2118.4" textLength="36.6" clip-path="url(#terminal-946635163-line-86)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2118.4" textLength="36.6" clip-path="url(#terminal-946635163-line-86)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="2118.4" textLength="85.4" clip-path="url(#terminal-946635163-line-86)">ABS-CBN</text><text class="terminal-946635163-r1" x="195.2" y="2118.4" textLength="36.6" clip-path="url(#terminal-946635163-line-86)">&#160;·&#160;</text><text class="terminal-946635163-r7" x="231.8" y="2118.4" textLength="146.4" clip-path="url(#terminal-946635163-line-86)">Philstar.com</text><text class="terminal-946635163-r1" x="1220" y="2118.4" textLength="12.2" clip-path="url(#terminal-946635163-line-86)">
+</text><text class="terminal-946635163-r1" x="1220" y="2142.8" textLength="12.2" clip-path="url(#terminal-946635163-line-87)">
+</text><text class="terminal-946635163-r5" x="0" y="2167.2" textLength="451.4" clip-path="url(#terminal-946635163-line-88)">8.&#160;【东南亚·融资】Grab&#160;收购&#160;Atome，独立&#160;BNPL&#160;平台承压</text><text class="terminal-946635163-r1" x="1220" y="2167.2" textLength="12.2" clip-path="url(#terminal-946635163-line-88)">
+</text><text class="terminal-946635163-r1" x="1220" y="2191.6" textLength="12.2" clip-path="url(#terminal-946635163-line-89)">
+</text><text class="terminal-946635163-r6" x="0" y="2216" textLength="36.6" clip-path="url(#terminal-946635163-line-90)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="2216" textLength="61" clip-path="url(#terminal-946635163-line-90)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="2216" textLength="756.4" clip-path="url(#terminal-946635163-line-90)">：东南亚&#160;BNPL&#160;竞争格局变化，独立平台需重估获客与资金模式&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2216" textLength="12.2" clip-path="url(#terminal-946635163-line-90)">
+</text><text class="terminal-946635163-r6" x="0" y="2240.4" textLength="36.6" clip-path="url(#terminal-946635163-line-91)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2240.4" textLength="988.2" clip-path="url(#terminal-946635163-line-91)">影响环节：获客&#160;｜&#160;置信度&#160;0.70&#160;｜&#160;涉及：Grab、Atome&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2240.4" textLength="12.2" clip-path="url(#terminal-946635163-line-91)">
+</text><text class="terminal-946635163-r6" x="0" y="2264.8" textLength="36.6" clip-path="url(#terminal-946635163-line-92)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2264.8" textLength="36.6" clip-path="url(#terminal-946635163-line-92)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="2264.8" textLength="219.6" clip-path="url(#terminal-946635163-line-92)">The&#160;Business&#160;Times</text><text class="terminal-946635163-r1" x="1220" y="2264.8" textLength="12.2" clip-path="url(#terminal-946635163-line-92)">
+</text><text class="terminal-946635163-r1" x="1220" y="2289.2" textLength="12.2" clip-path="url(#terminal-946635163-line-93)">
+</text><text class="terminal-946635163-r5" x="0" y="2313.6" textLength="451.4" clip-path="url(#terminal-946635163-line-94)">9.&#160;【菲律宾·融资】Asialink&#160;新贷款计划目标放款&#160;280&#160;亿比索</text><text class="terminal-946635163-r1" x="1220" y="2313.6" textLength="12.2" clip-path="url(#terminal-946635163-line-94)">
+</text><text class="terminal-946635163-r1" x="1220" y="2338" textLength="12.2" clip-path="url(#terminal-946635163-line-95)">
+</text><text class="terminal-946635163-r6" x="0" y="2362.4" textLength="36.6" clip-path="url(#terminal-946635163-line-96)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="2362.4" textLength="61" clip-path="url(#terminal-946635163-line-96)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="2362.4" textLength="732" clip-path="url(#terminal-946635163-line-96)">：反映菲律宾消费信贷放款规模扩张，影响同业竞争与资金面&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2362.4" textLength="12.2" clip-path="url(#terminal-946635163-line-96)">
+</text><text class="terminal-946635163-r6" x="0" y="2386.8" textLength="36.6" clip-path="url(#terminal-946635163-line-97)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2386.8" textLength="1000.4" clip-path="url(#terminal-946635163-line-97)">影响环节：额度&#160;｜&#160;置信度&#160;0.65&#160;｜&#160;涉及：Asialink&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2386.8" textLength="12.2" clip-path="url(#terminal-946635163-line-97)">
+</text><text class="terminal-946635163-r6" x="0" y="2411.2" textLength="36.6" clip-path="url(#terminal-946635163-line-98)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2411.2" textLength="36.6" clip-path="url(#terminal-946635163-line-98)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="2411.2" textLength="146.4" clip-path="url(#terminal-946635163-line-98)">Philstar.com</text><text class="terminal-946635163-r1" x="1220" y="2411.2" textLength="12.2" clip-path="url(#terminal-946635163-line-98)">
+</text><text class="terminal-946635163-r1" x="1220" y="2435.6" textLength="12.2" clip-path="url(#terminal-946635163-line-99)">
+</text><text class="terminal-946635163-r5" x="0" y="2460" textLength="500.2" clip-path="url(#terminal-946635163-line-100)">10.&#160;【菲律宾·融资】IFC批准向菲律宾First&#160;Circle融资1.1亿美元</text><text class="terminal-946635163-r1" x="1220" y="2460" textLength="12.2" clip-path="url(#terminal-946635163-line-100)">
+</text><text class="terminal-946635163-r1" x="1220" y="2484.4" textLength="12.2" clip-path="url(#terminal-946635163-line-101)">
+</text><text class="terminal-946635163-r6" x="0" y="2508.8" textLength="36.6" clip-path="url(#terminal-946635163-line-102)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="2508.8" textLength="61" clip-path="url(#terminal-946635163-line-102)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="2508.8" textLength="707.6" clip-path="url(#terminal-946635163-line-102)">：为菲律宾中小企业放贷机构补充资金，影响本地信贷供给与竞争&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2508.8" textLength="12.2" clip-path="url(#terminal-946635163-line-102)">
+</text><text class="terminal-946635163-r6" x="0" y="2533.2" textLength="36.6" clip-path="url(#terminal-946635163-line-103)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2533.2" textLength="951.6" clip-path="url(#terminal-946635163-line-103)">影响环节：无明确环节&#160;｜&#160;置信度&#160;0.70&#160;｜&#160;涉及：IFC、First&#160;Circle&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2533.2" textLength="12.2" clip-path="url(#terminal-946635163-line-103)">
+</text><text class="terminal-946635163-r6" x="0" y="2557.6" textLength="36.6" clip-path="url(#terminal-946635163-line-104)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2557.6" textLength="36.6" clip-path="url(#terminal-946635163-line-104)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="2557.6" textLength="158.6" clip-path="url(#terminal-946635163-line-104)">Daily&#160;Tribune</text><text class="terminal-946635163-r1" x="1220" y="2557.6" textLength="12.2" clip-path="url(#terminal-946635163-line-104)">
+</text><text class="terminal-946635163-r1" x="1220" y="2582" textLength="12.2" clip-path="url(#terminal-946635163-line-105)">
+</text><text class="terminal-946635163-r5" x="0" y="2606.4" textLength="439.2" clip-path="url(#terminal-946635163-line-106)">11.&#160;【菲律宾·融资】蚂蚁国际支持的金融科技独角兽获批菲律宾最大IPO</text><text class="terminal-946635163-r1" x="1220" y="2606.4" textLength="12.2" clip-path="url(#terminal-946635163-line-106)">
+</text><text class="terminal-946635163-r1" x="1220" y="2630.8" textLength="12.2" clip-path="url(#terminal-946635163-line-107)">
+</text><text class="terminal-946635163-r6" x="0" y="2655.2" textLength="36.6" clip-path="url(#terminal-946635163-line-108)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="2655.2" textLength="61" clip-path="url(#terminal-946635163-line-108)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="2655.2" textLength="719.8" clip-path="url(#terminal-946635163-line-108)">：头部数字信贷机构上市，影响菲律宾消费信贷竞争与资金格局&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2655.2" textLength="12.2" clip-path="url(#terminal-946635163-line-108)">
+</text><text class="terminal-946635163-r6" x="0" y="2679.6" textLength="36.6" clip-path="url(#terminal-946635163-line-109)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2679.6" textLength="963.8" clip-path="url(#terminal-946635163-line-109)">影响环节：无明确环节&#160;｜&#160;置信度&#160;0.70&#160;｜&#160;涉及：Ant&#160;International&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2679.6" textLength="12.2" clip-path="url(#terminal-946635163-line-109)">
+</text><text class="terminal-946635163-r6" x="0" y="2704" textLength="36.6" clip-path="url(#terminal-946635163-line-110)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2704" textLength="36.6" clip-path="url(#terminal-946635163-line-110)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="2704" textLength="85.4" clip-path="url(#terminal-946635163-line-110)">wsj.com</text><text class="terminal-946635163-r1" x="1220" y="2704" textLength="12.2" clip-path="url(#terminal-946635163-line-110)">
+</text><text class="terminal-946635163-r1" x="1220" y="2728.4" textLength="12.2" clip-path="url(#terminal-946635163-line-111)">
+</text><text class="terminal-946635163-r5" x="0" y="2752.8" textLength="341.6" clip-path="url(#terminal-946635163-line-112)">12.&#160;【印尼·市场】印尼金融公司2027年借贷成本上升</text><text class="terminal-946635163-r1" x="1220" y="2752.8" textLength="12.2" clip-path="url(#terminal-946635163-line-112)">
+</text><text class="terminal-946635163-r1" x="1220" y="2777.2" textLength="12.2" clip-path="url(#terminal-946635163-line-113)">
+</text><text class="terminal-946635163-r6" x="0" y="2801.6" textLength="36.6" clip-path="url(#terminal-946635163-line-114)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="2801.6" textLength="61" clip-path="url(#terminal-946635163-line-114)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="2801.6" textLength="744.2" clip-path="url(#terminal-946635163-line-114)">：融资成本上升挤压消费信贷利差，需调整定价与放款节奏&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2801.6" textLength="12.2" clip-path="url(#terminal-946635163-line-114)">
+</text><text class="terminal-946635163-r6" x="0" y="2826" textLength="36.6" clip-path="url(#terminal-946635163-line-115)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2826" textLength="1000.4" clip-path="url(#terminal-946635163-line-115)">影响环节：定价&#160;｜&#160;置信度&#160;0.60&#160;｜&#160;涉及：Indonesia&#160;multifinance&#160;companies&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2826" textLength="12.2" clip-path="url(#terminal-946635163-line-115)">
+</text><text class="terminal-946635163-r6" x="0" y="2850.4" textLength="36.6" clip-path="url(#terminal-946635163-line-116)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2850.4" textLength="36.6" clip-path="url(#terminal-946635163-line-116)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="2850.4" textLength="280.6" clip-path="url(#terminal-946635163-line-116)">Asian&#160;Banking&#160;&amp;&#160;Finance</text><text class="terminal-946635163-r1" x="1220" y="2850.4" textLength="12.2" clip-path="url(#terminal-946635163-line-116)">
+</text><text class="terminal-946635163-r1" x="1220" y="2874.8" textLength="12.2" clip-path="url(#terminal-946635163-line-117)">
+</text><text class="terminal-946635163-r5" x="0" y="2899.2" textLength="353.8" clip-path="url(#terminal-946635163-line-118)">13.&#160;【菲律宾·市场】菲律宾借款人因成本上升放弃信贷计划</text><text class="terminal-946635163-r1" x="1220" y="2899.2" textLength="12.2" clip-path="url(#terminal-946635163-line-118)">
+</text><text class="terminal-946635163-r1" x="1220" y="2923.6" textLength="12.2" clip-path="url(#terminal-946635163-line-119)">
+</text><text class="terminal-946635163-r6" x="0" y="2948" textLength="36.6" clip-path="url(#terminal-946635163-line-120)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="2948" textLength="61" clip-path="url(#terminal-946635163-line-120)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="2948" textLength="817.4" clip-path="url(#terminal-946635163-line-120)">：需求端收缩信号，影响获客与放款规模预期&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2948" textLength="12.2" clip-path="url(#terminal-946635163-line-120)">
+</text><text class="terminal-946635163-r6" x="0" y="2972.4" textLength="36.6" clip-path="url(#terminal-946635163-line-121)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2972.4" textLength="1049.2" clip-path="url(#terminal-946635163-line-121)">影响环节：获客&#160;｜&#160;置信度&#160;0.60&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="2972.4" textLength="12.2" clip-path="url(#terminal-946635163-line-121)">
+</text><text class="terminal-946635163-r6" x="0" y="2996.8" textLength="36.6" clip-path="url(#terminal-946635163-line-122)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="2996.8" textLength="36.6" clip-path="url(#terminal-946635163-line-122)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="2996.8" textLength="280.6" clip-path="url(#terminal-946635163-line-122)">Asian&#160;Banking&#160;&amp;&#160;Finance</text><text class="terminal-946635163-r1" x="1220" y="2996.8" textLength="12.2" clip-path="url(#terminal-946635163-line-122)">
+</text><text class="terminal-946635163-r1" x="1220" y="3021.2" textLength="12.2" clip-path="url(#terminal-946635163-line-123)">
+</text><text class="terminal-946635163-r5" x="0" y="3045.6" textLength="500.2" clip-path="url(#terminal-946635163-line-124)">14.&#160;【新加坡·市场】分析师分歧：Grab旗下Superbank与Atome估值</text><text class="terminal-946635163-r1" x="1220" y="3045.6" textLength="12.2" clip-path="url(#terminal-946635163-line-124)">
+</text><text class="terminal-946635163-r1" x="1220" y="3070" textLength="12.2" clip-path="url(#terminal-946635163-line-125)">
+</text><text class="terminal-946635163-r6" x="0" y="3094.4" textLength="36.6" clip-path="url(#terminal-946635163-line-126)">&#160;•&#160;</text><text class="terminal-946635163-r6" x="36.6" y="3094.4" textLength="61" clip-path="url(#terminal-946635163-line-126)">为什么重要</text><text class="terminal-946635163-r1" x="158.6" y="3094.4" textLength="817.4" clip-path="url(#terminal-946635163-line-126)">：反映市场对东南亚数字银行与&#160;BNPL&#160;资产估值预期&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="3094.4" textLength="12.2" clip-path="url(#terminal-946635163-line-126)">
+</text><text class="terminal-946635163-r6" x="0" y="3118.8" textLength="36.6" clip-path="url(#terminal-946635163-line-127)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="3118.8" textLength="939.4" clip-path="url(#terminal-946635163-line-127)">影响环节：无明确环节&#160;｜&#160;置信度&#160;0.60&#160;｜&#160;涉及：Grab、Superbank、Atome&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</text><text class="terminal-946635163-r1" x="1220" y="3118.8" textLength="12.2" clip-path="url(#terminal-946635163-line-127)">
+</text><text class="terminal-946635163-r6" x="0" y="3143.2" textLength="36.6" clip-path="url(#terminal-946635163-line-128)">&#160;•&#160;</text><text class="terminal-946635163-r1" x="36.6" y="3143.2" textLength="36.6" clip-path="url(#terminal-946635163-line-128)">来源：</text><text class="terminal-946635163-r7" x="109.8" y="3143.2" textLength="280.6" clip-path="url(#terminal-946635163-line-128)">Yahoo&#160;Finance&#160;Singapore</text><text class="terminal-946635163-r1" x="1220" y="3143.2" textLength="12.2" clip-path="url(#terminal-946635163-line-128)">
+</text>
+    </g>
+    </g>
+</svg>

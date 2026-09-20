@@ -1,0 +1,74 @@
+name: daily-radar
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 每天 00:00 UTC = 08:00 SGT
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "只跑流程，不推送"
+        type: boolean
+        default: true
+
+concurrency:
+  group: daily-radar
+  cancel-in-progress: false   # 不并发写同一份状态库
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # 跨天的「进展更新」依赖 SQLite 里的事件状态。Runner 是临时的，这里用 Actions cache 滚动保存：
+      # 每次以本次 run_id 为 key 存新版本，恢复时取最近一份。超过 7 天没有任何运行，缓存会被 GitHub 回收。
+      - name: Restore state DB
+        uses: actions/cache/restore@v4
+        with:
+          path: data/radar.db
+          key: radar-db-${{ github.run_id }}
+          restore-keys: radar-db-
+
+      - name: Run radar
+        env:
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+          SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          NOTIFY_METHOD: ${{ vars.NOTIFY_METHOD }}   # serverchan | email | none，未设置则用 config.yaml
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m radar.cli run --dry-run
+          else
+            python -m radar.cli run
+          fi
+
+      # 即使推送失败也要保存状态，否则明天会重复处理今天的条目
+      - name: Save state DB
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/radar.db
+          key: radar-db-${{ github.run_id }}
+
+      - name: Upload digest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: digest-${{ github.run_id }}
+          path: data/digests/
+          retention-days: 30
+          if-no-files-found: ignore
