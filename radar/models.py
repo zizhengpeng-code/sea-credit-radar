@@ -68,3 +68,15 @@ class Event(BaseModel):
     sources: list[Source] = Field(default_factory=list)
     updates: list[Update] = Field(default_factory=list)
     enrichment: Enrichment | None = None
+
+
+def sane_effective_date(d: dt.date | None, ref: dt.date) -> dt.date | None:
+    """生效日期合理性校验：相对新闻日期 ref，早于 180 天前或晚于 3 年后的视为模型猜错年份，丢弃。
+
+    实测模型会把「6月25日」猜成 2024 年，或把签署日当生效日；宁可留空，也不推送错误日期。
+    """
+    if d is None:
+        return None
+    if d < ref - dt.timedelta(days=180) or d > ref + dt.timedelta(days=365 * 3):
+        return None
+    return d

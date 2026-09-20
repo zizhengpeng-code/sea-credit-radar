@@ -109,3 +109,51 @@ def test_process_creates_event_filters_and_fails(store, cfg):
     assert ev.effective_date == dt.date(2026, 12, 1) and len(ev.sources) == 1
     assert store.count_items() == {"linked": 1, "filtered": 1, "failed": 1}
     assert json.dumps(ev.impact_stage) == '["pricing"]'
+
+
+# ---------- 生效日期校验 / 字数压缩 ----------
+def test_sane_effective_date():
+    from radar.models import sane_effective_date
+    ref = dt.date(2026, 9, 21)
+    assert sane_effective_date(None, ref) is None
+    assert sane_effective_date(dt.date(2026, 12, 1), ref) == dt.date(2026, 12, 1)
+    assert sane_effective_date(dt.date(2024, 6, 25), ref) is None   # 猜错年份（实测出现过）
+    assert sane_effective_date(dt.date(2026, 7, 1), ref) == dt.date(2026, 7, 1)  # 近期已生效仍保留
+    assert sane_effective_date(dt.date(2035, 1, 1), ref) is None
+
+
+def test_extract_batch_drops_implausible_effective_date():
+    items = [make_item("BSP bans SMS OTP for banks")]
+    llm = FakeLLM([{"results": [dict(GOOD, effective_date="2024-06-25")]}])
+    assert extract_batch(llm, items)[0].effective_date is None
+
+
+def test_over_limit_text_is_shortened_by_model_not_truncated():
+    items = [make_item("IFC approves loan to First Circle")]
+    long = "IFC 批准向菲律宾 First Circle 提供最高一亿美元的融资额度用于中小企业放款"  # > 30 字
+    llm = FakeLLM([{"results": [dict(GOOD, headline_cn=long)]},
+                   {"items": [{"idx": 0, "text": "IFC 批准向 First Circle 提供1亿美元融资"}]}])
+    x = extract_batch(llm, items)[0]
+    assert x.headline_cn == "IFC 批准向 First Circle 提供1亿美元融资" and "…" not in x.headline_cn
+    assert llm.stages == ["extract", "shorten"]
+
+
+def test_shorten_failure_falls_back_to_truncation():
+    items = [make_item("IFC approves loan to First Circle")]
+    long = "字" * 45
+    llm = FakeLLM([{"results": [dict(GOOD, headline_cn=long)]}, LLMError("boom")])
+    x = extract_batch(llm, items)[0]
+    assert len(x.headline_cn) == 30 and x.headline_cn.endswith("…")
+
+
+def test_shorten_result_still_too_long_is_ignored_then_truncated():
+    items = [make_item("IFC approves loan to First Circle")]
+    long = "字" * 45
+    llm = FakeLLM([{"results": [dict(GOOD, headline_cn=long)]}, {"items": [{"idx": 0, "text": "字" * 40}]}])
+    assert len(extract_batch(llm, items)[0].headline_cn) == 30
+
+
+def test_no_shorten_call_when_within_limits():
+    llm = FakeLLM([{"results": [GOOD]}])
+    extract_batch(llm, [make_item("OJK caps paylater")])
+    assert llm.stages == ["extract"]

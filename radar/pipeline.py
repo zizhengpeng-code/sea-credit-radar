@@ -3,14 +3,19 @@ from __future__ import annotations
 
 import asyncio
 import datetime as dt
+from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Callable
 
+from .config import local_tz
 from .dedupe import dedupe_items, event_fingerprint, match_events
+from .digest import Digest, build_digest, render_markdown
 from .enrich import enrich_event, needs_enrich
 from .extract import ItemExtraction, extract_all
 from .fetch import fetch_all, fetch_fulltext
 from .llm import LLMClient
 from .models import Event, RawItem, Source, Update
+from .notify import NotifyError, notify
 from .store import Store
 
 MAX_CANDIDATES_PER_BATCH = 8
@@ -75,14 +80,15 @@ def new_event(it: RawItem, x: ItemExtraction, today: dt.date) -> Event:
 
 
 def process(cfg: dict[str, Any], store: Store, llm: LLMClient, today: dt.date,
-            limit: int | None = None, fetch_text: Callable[..., str | None] = fetch_fulltext
-            ) -> dict[str, Any]:
-    """处理库内 status=new 的条目：抽取 -> 过滤 / 新建事件 / 并入既有事件（进展更新）-> enrich 分支。"""
+            limit: int | None = None, fetch_text: Callable[..., str | None] = fetch_fulltext,
+            items: list[RawItem] | None = None) -> dict[str, Any]:
+    """处理条目（默认库内 status=new）：抽取 -> 过滤 / 新建事件 / 并入既有事件（进展更新）-> enrich 分支。"""
     ec, dc = cfg.get("extract", {}), cfg.get("dedupe", {})
     cand_thr = dc.get("event_candidate_threshold", 0.3)
     lookback = dc.get("event_lookback_days", 30)
     bs = ec.get("batch_size", 8)
-    items = store.items_by_status("new", limit=limit or ec.get("max_items_per_run", 150))
+    if items is None:
+        items = store.items_by_status("new", limit=limit or ec.get("max_items_per_run", 150))
     stats = {"processed": len(items), "filtered": 0, "events_new": 0, "updates": 0,
              "merged_sources": 0, "failed": 0, "enriched": 0}
 
@@ -156,3 +162,68 @@ def process(cfg: dict[str, Any], store: Store, llm: LLMClient, today: dt.date,
                 store.save_event(richer)
                 stats["enriched"] += 1
     return stats
+
+
+@dataclass
+class RunResult:
+    digest: Digest
+    markdown: str
+    ingest_stats: dict[str, Any]
+    process_stats: dict[str, Any]
+    digest_path: Path | None = None
+    notified: str | None = None  # 实际使用的推送方式；None = 未推送
+    notify_error: str | None = None
+
+
+def digest_dir(cfg: dict[str, Any]) -> Path:
+    return Path(cfg["db_path"]).parent / "digests"
+
+
+def save_digest(cfg: dict[str, Any], day: dt.date, markdown: str) -> Path:
+    d = digest_dir(cfg)
+    d.mkdir(parents=True, exist_ok=True)
+    path = d / f"{day.isoformat()}.md"
+    path.write_text(markdown, encoding="utf-8")
+    return path
+
+
+def run_pipeline(cfg: dict[str, Any], store: Store, llm: LLMClient, day: dt.date, *,
+                 dry_run: bool = False, limit: int | None = None,
+                 fetch_text: Callable[..., str | None] = fetch_fulltext) -> RunResult:
+    """fetch -> dedupe -> extract -> enrich -> store -> digest -> notify。
+
+    dry_run 只跳过推送；抓取、模型调用和入库照常进行（跨天的进展追踪依赖入库状态）。
+    """
+    ing = ingest(cfg, store)
+    ing["expired"] = store.expire_stale(cfg.get("fetch", {}).get("expire_after_hours", 96))
+    proc = process(cfg, store, llm, day, limit=limit, fetch_text=fetch_text)
+    digest = build_digest(store, day, {**ing, **proc}, store.run_summary(llm.run_id), llm.model)
+    md = render_markdown(digest)
+    res = RunResult(digest, md, ing, proc, save_digest(cfg, day, md))
+    if not dry_run:
+        try:
+            res.notified = notify(cfg, f"SEA Credit Radar {day.isoformat()}（新 {len(digest.new)} / 进展 {len(digest.updated)}）", md)
+        except NotifyError as exc:  # 推送失败不能丢简报：已落盘，交由调用方提示
+            res.notify_error = str(exc)
+    return res
+
+
+def backfill(cfg: dict[str, Any], store: Store, llm: LLMClient, days: int,
+             fetch_text: Callable[..., str | None] = fetch_fulltext) -> dict[str, Any]:
+    """回填历史：抓取最近 days 天，按发布日期从早到晚逐日处理，使 first_seen / 进展更新的日期贴近真实。"""
+    ing = ingest(cfg, store, window_days=days)
+    tz = local_tz(cfg)
+    pending = store.items_by_status("new")
+    by_day: dict[dt.date, list[RawItem]] = {}
+    for it in pending:
+        by_day.setdefault(it.published.astimezone(tz).date(), []).append(it)
+    per_day = cfg.get("extract", {}).get("max_items_per_run", 150)
+    totals = {"days": 0, "events_new": 0, "updates": 0, "filtered": 0, "failed": 0, "enriched": 0}
+    for d in sorted(by_day):
+        st = process(cfg, store, llm, d, items=by_day[d][:per_day], fetch_text=fetch_text)
+        digest = build_digest(store, d, model=llm.model)
+        save_digest(cfg, d, render_markdown(digest))
+        totals["days"] += 1
+        for k in ("events_new", "updates", "filtered", "failed", "enriched"):
+            totals[k] += st[k]
+    return {"ingest": ing, **totals}

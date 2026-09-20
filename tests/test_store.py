@@ -87,3 +87,16 @@ def test_ingest_end_to_end(monkeypatch, cfg):
     monkeypatch.setattr(pl, "fetch_all", fake2)
     res3 = ingest(cfg, store)
     assert res3["near_duplicates"] == 1 and res3["to_process"] == 0
+
+
+def test_expire_stale_only_touches_old_new_items(store):
+    import datetime as dt2
+    old = make_item("old story about lending", url="https://a.com/old", hours_ago=24 * 10)
+    fresh = make_item("fresh story about lending", url="https://a.com/fresh", hours_ago=1)
+    # conftest.NOW 是固定日期，这里直接改成相对当前时间的发布时间
+    now = dt2.datetime.now(dt2.timezone.utc)
+    old = old.model_copy(update={"published": now - dt2.timedelta(hours=200)})
+    fresh = fresh.model_copy(update={"published": now - dt2.timedelta(hours=1)})
+    store.add_raw_items([old, fresh])
+    assert store.expire_stale(96) == 1
+    assert store.count_items() == {"expired": 1, "new": 1}

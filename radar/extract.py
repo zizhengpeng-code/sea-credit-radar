@@ -7,8 +7,9 @@ import logging
 from pydantic import BaseModel, Field, model_validator
 
 from .llm import LLMClient, LLMError
-from .models import Category, Country, RawItem, Stage
-from .prompts import EXTRACT_SYSTEM, EXTRACT_VERSION, build_extract_prompt
+from .models import Category, Country, RawItem, Stage, sane_effective_date
+from .prompts import (EXTRACT_SYSTEM, EXTRACT_VERSION, SHORTEN_SYSTEM, SHORTEN_VERSION,
+                      build_extract_prompt, build_shorten_prompt)
 
 log = logging.getLogger("radar.extract")
 
@@ -53,8 +54,10 @@ def fit(text: str, n: int) -> str:
     return text if len(text) <= n else text[: n - 1] + "…"
 
 
-def normalize(x: ItemExtraction) -> ItemExtraction:
-    """字数约束、实体数量上限、去重。"""
+def normalize(x: ItemExtraction, ref: dt.date | None = None) -> ItemExtraction:
+    """字数兜底截断、实体数量上限、去重、生效日期合理性校验（ref 为新闻发布日期）。"""
+    if ref is not None:
+        x.effective_date = sane_effective_date(x.effective_date, ref)
     x.headline_cn = fit(x.headline_cn, HEADLINE_MAX)
     x.why_it_matters = fit(x.why_it_matters, WHY_MAX)
     if x.update_note:
@@ -66,6 +69,48 @@ def normalize(x: ItemExtraction) -> ItemExtraction:
     x.entities = seen[:5]
     x.impact_stage = list(dict.fromkeys(x.impact_stage))
     return x
+
+
+class ShortenItem(BaseModel):
+    idx: int
+    text: str = Field(min_length=1, max_length=200)
+
+
+class ShortenBatch(BaseModel):
+    items: list[ShortenItem]
+
+
+_LIMITS = {"headline_cn": HEADLINE_MAX, "why_it_matters": WHY_MAX, "update_note": WHY_MAX}
+
+
+def shorten_over_limit(llm: LLMClient, xs: list[ItemExtraction]) -> int:
+    """对超出字数上限的字段，用一次小调用让模型自己压缩（比硬截断读起来完整）。返回成功压缩的字段数。
+
+    失败不抛异常：保持原文，交给 normalize 的截断兜底。
+    """
+    jobs, targets = [], []
+    for x in xs:
+        for f, lim in _LIMITS.items():
+            v = getattr(x, f)
+            if v and len(v) > lim:
+                jobs.append({"idx": len(jobs), "text": v, "max_chars": lim})
+                targets.append((x, f, lim))
+    if not jobs:
+        return 0
+    try:
+        data = llm.complete(build_shorten_prompt(jobs), SHORTEN_SYSTEM, ShortenBatch,
+                            stage="shorten", prompt_version=SHORTEN_VERSION)
+    except LLMError as exc:
+        log.warning("压缩失败，退回截断：%s", exc)
+        return 0
+    done = 0
+    for r in ShortenBatch.model_validate(data).items:
+        if 0 <= r.idx < len(targets):
+            x, f, lim = targets[r.idx]
+            if len(r.text.strip()) <= lim:
+                setattr(x, f, r.text.strip())
+                done += 1
+    return done
 
 
 def _payload(items: list[RawItem]) -> list[dict]:
@@ -83,8 +128,9 @@ def extract_batch(llm: LLMClient, items: list[RawItem], candidates: list[dict] |
     out: dict[int, ItemExtraction] = {}
     for r in BatchExtraction.model_validate(data).results:
         if 0 <= r.idx < len(items) and r.idx not in out:
-            out[r.idx] = normalize(r)
-    return out
+            out[r.idx] = r
+    shorten_over_limit(llm, [x for x in out.values() if x.relevant])
+    return {i: normalize(x, items[i].published.date()) for i, x in out.items()}
 
 
 def extract_all(llm: LLMClient, items: list[RawItem], batch_size: int = 8,

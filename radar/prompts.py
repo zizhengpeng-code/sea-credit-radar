@@ -38,7 +38,7 @@ relevant=false 的情形：股市与加密货币行情、无信贷含义的纯�
   pricing = 定价（利率、费用、APR 上限）
   collection = 贷后（催收、坏账处置、展期、投诉处理）
   没有明确影响时用空数组 []，不要凑数
-- effective_date: 政策/产品生效日期，格式 YYYY-MM-DD。只有原文明确写出具体日期才填，否则 null（只知月份也填 null）
+- effective_date: 政策/产品「开始生效/执行」的日期，格式 YYYY-MM-DD。注意：签署日、发布日、征求意见截止日、会议日都不是生效日。只有标题或摘要明确写出完整日期（含年份），或能结合条目发布日期无歧义推断年份时才填；只知月份、只知「6月25日」这类没有年份、或没写生效时间，一律填 null，不要猜年份
 - confidence: 0 到 1，你对本条抽取结果（尤其 category 与 impact_stage）的把握。信息不足、标题含糊、只能靠猜时必须给低分（<0.6），不要编造细节
 
 ## 事件后续判断（仅当输入提供了「已有事件」时）
@@ -82,7 +82,7 @@ ENRICH_SYSTEM = """你是东南亚消费信贷市场分析师，服务对象是�
 只输出一个 JSON 对象，禁止任何前言、解释或 Markdown 代码块。字段：
 {
   "policy_points": ["政策/事件要点，每条 40 字以内，最多 5 条，中文"],
-  "effective_date": "YYYY-MM-DD 或 null（原文明确写出具体日期才填）",
+  "effective_date": "YYYY-MM-DD 或 null。指政策/产品开始生效的日期，签署日、发布日、意见征求截止日都不是；原文没写年份或没写生效时间时填 null，不要猜年份；年份可结合下面给出的「当前日期」推断",
   "business_impact": "对信贷业务的具体影响，100 字以内：影响哪个环节、方向（收紧/放松/成本上升等）、涉及哪类机构或产品；有数字就写数字",
   "category": "regulation | product | funding | market | risk",
   "impact_stage": ["acquisition | underwriting | limit | pricing | collection，可多选，无明确影响用 []"],
@@ -98,6 +98,7 @@ ENRICH_SYSTEM = """你是东南亚消费信贷市场分析师，服务对象是�
 
 def build_enrich_prompt(ev: dict, fulltext: str | None) -> str:
     lines = [
+        f'当前日期: {ev["today"]}',
         "## 初步归类",
         f'国家: {ev["country"]} | 类别: {ev["category"]} | 影响环节: {ev["impact_stage"]} | 置信度: {ev["confidence"]}',
         f'摘要: {ev["headline_cn"]}',
@@ -109,4 +110,19 @@ def build_enrich_prompt(ev: dict, fulltext: str | None) -> str:
         lines += ["## 原文", fulltext]
     else:
         lines += ["## 原文", "（未能获取原文，只有上面的标题。请严格遵守「只有标题时 confidence 不得超过 0.6」）"]
+    return "\n".join(lines)
+
+
+SHORTEN_VERSION = "shorten-v1"
+
+SHORTEN_SYSTEM = """你是中文编辑。下面每条文本超过了字数上限，请压缩到上限以内（含标点与数字）。
+要求：保留主体、动作、关键数字；删修饰语与次要信息；不要新增原文没有的信息；不要留半句。
+只输出一个 JSON 对象，禁止任何前言或 Markdown 代码块：{"items": [{"idx": 数字, "text": "压缩后的文本"}]}
+每条输入对应一条输出，idx 与输入一致。"""
+
+
+def build_shorten_prompt(jobs: list[dict]) -> str:
+    lines = ["请压缩以下文本："]
+    for j in jobs:
+        lines.append(f'[{j["idx"]}] 上限 {j["max_chars"]} 字，当前 {len(j["text"])} 字：{j["text"]}')
     return "\n".join(lines)

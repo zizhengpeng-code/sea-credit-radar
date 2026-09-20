@@ -34,7 +34,7 @@ def store():
 def cfg():
     return {
         "dedupe": {"simhash_max_distance": 3, "jaccard_threshold": 0.6,
-                   "event_merge_threshold": 0.75, "event_candidate_threshold": 0.3,
+                   "event_candidate_threshold": 0.3,
                    "event_lookback_days": 30},
         "fetch": {"window_hours": 48, "concurrency": 4, "timeout_seconds": 5},
         "feeds": [
@@ -52,6 +52,7 @@ class FakeLLM:
         self.prompts = []
         self.stages = []
         self.model = "fake"
+        self.run_id = "fake"
 
     def complete(self, prompt, system, schema, *, stage="llm", prompt_version=""):
         self.prompts.append(prompt)

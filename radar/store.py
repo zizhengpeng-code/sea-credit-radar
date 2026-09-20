@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS raw_items (
     country_hint TEXT DEFAULT 'OTHER',
     tier         INTEGER DEFAULT 3,
     snippet      TEXT DEFAULT '',
-    status       TEXT NOT NULL DEFAULT 'new',   -- new | linked | filtered | failed | duplicate
+    status       TEXT NOT NULL DEFAULT 'new',   -- new | linked | filtered | failed | duplicate | expired
     event_id     TEXT,
     note         TEXT DEFAULT ''
 );
@@ -140,6 +140,14 @@ class Store:
             (status, event_id, note, item_id),
         )
         self.conn.commit()
+
+    def expire_stale(self, older_than_hours: float) -> int:
+        """把发布时间过久、仍未处理的 new 条目标记为 expired，避免旧条目永远占着队列。"""
+        cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=older_than_hours)).isoformat()
+        cur = self.conn.execute(
+            "UPDATE raw_items SET status='expired' WHERE status='new' AND published < ?", (cutoff,))
+        self.conn.commit()
+        return cur.rowcount
 
     def item_event_id(self, item_id: str) -> str | None:
         row = self.conn.execute("SELECT event_id FROM raw_items WHERE id=?", (item_id,)).fetchone()

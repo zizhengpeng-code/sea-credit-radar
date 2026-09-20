@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 
 from .fetch import fetch_fulltext
 from .llm import LLMClient, LLMError
-from .models import Category, Enrichment, Event, Stage
+from .models import Category, Enrichment, Event, Stage, sane_effective_date
 from .prompts import ENRICH_SYSTEM, ENRICH_VERSION, build_enrich_prompt
 
 log = logging.getLogger("radar.enrich")
@@ -45,8 +45,9 @@ def enrich_event(llm: LLMClient, ev: Event, cfg: dict[str, Any],
         text = fetch(src.url, max_chars=max_chars)
         if text:
             break
+    ref = max([s.published.date() for s in ev.sources if s.published] or [ev.last_updated])
     prompt = build_enrich_prompt(
-        {"country": ev.country, "category": ev.category, "impact_stage": ev.impact_stage,
+        {"today": ref.isoformat(), "country": ev.country, "category": ev.category, "impact_stage": ev.impact_stage,
          "confidence": ev.confidence, "headline_cn": ev.headline_cn,
          "titles": [s.title for s in ev.sources]}, text)
     try:
@@ -56,14 +57,15 @@ def enrich_event(llm: LLMClient, ev: Event, cfg: dict[str, Any],
         log.warning("enrich 失败 %s：%s", ev.id, exc)
         return None
     conf = out.confidence if text else min(out.confidence, NO_FULLTEXT_CONF_CAP)
+    eff = sane_effective_date(out.effective_date, ref)
     updated = ev.model_copy(update={
         "category": out.category,
         "impact_stage": list(dict.fromkeys(out.impact_stage)),
         "confidence": conf,
-        "effective_date": out.effective_date or ev.effective_date,
+        "effective_date": eff or ev.effective_date,
         "enrichment": Enrichment(
             policy_points=[p[:80] for p in out.policy_points[:5]],
-            effective_date=out.effective_date,
+            effective_date=eff,
             business_impact=out.business_impact[:200],
             fulltext_used=bool(text),
         ),

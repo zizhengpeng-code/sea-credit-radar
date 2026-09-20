@@ -6,6 +6,7 @@ countries: [ID, PH, SG, VN]
 
 fetch:
   window_hours: 48              # 只保留此时间窗内的条目
+  expire_after_hours: 96        # 超过此时长仍未处理（超出单次上限而积压）的条目直接作废
   concurrency: 8
   timeout_seconds: 20
   # 站点页面噪声（监管官网 site: 查询会返回这类页面）
@@ -28,7 +29,7 @@ dedupe:
 
 extract:
   batch_size: 8                 # 每次模型调用处理的条目数
-  max_items_per_run: 150        # 单次运行上限，控制成本
+  max_items_per_run: 250        # 单次运行上限，控制成本
 
 enrich:
   confidence_below: 0.6         # category=regulation 或 confidence 低于此值时深度解读
