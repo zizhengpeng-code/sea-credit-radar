@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 282" width="1200" height="282" role="img" aria-labelledby="title desc">
+<title id="title">SEA Credit Radar</title>
+<desc id="desc">Daily events and follow-up reporting</desc>
+<defs><clipPath id="frame"><rect x="1" y="1" width="1198" height="280" rx="24"/></clipPath><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#0a2926"/></linearGradient>
+<radialGradient id="light"><stop stop-color="#67e8c3" stop-opacity=".16"/><stop offset="1" stop-color="#67e8c3" stop-opacity="0"/></radialGradient>
+<linearGradient id="beam"><stop stop-color="#67e8c3" stop-opacity=".06"/><stop offset="1" stop-color="#67e8c3" stop-opacity=".34"/></linearGradient>
+<pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#67e8c3" opacity=".22"/></pattern></defs>
+<g clip-path="url(#frame)">
+<rect width="1200" height="282" fill="url(#bg)"/>
+<ellipse cx="963" cy="141" rx="288" ry="226" fill="url(#light)"/>
+<path d="M704 0h496v282H704z" fill="url(#dots)"/>
+<path d="M54 217H686M704 34v214" stroke="#67e8c3" stroke-opacity=".22"/>
+<path d="M54 52h20" stroke="#67e8c3" stroke-width="3" stroke-linecap="round"/>
+<g fill="none" stroke="#67e8c3" stroke-opacity=".35"><circle cx="971" cy="141" r="30"/><circle cx="971" cy="141" r="61"/><circle cx="971" cy="141" r="92"/><circle cx="971" cy="141" r="121"/><path d="M832 141h280m-141-129v258m-88-217 176 176m-176 0 176-176"/></g><path d="M971 141 1037 40a121 121 0 0 1 52 71Z" fill="url(#beam)"/><path d="m971 141 118-30" stroke="#67e8c3" stroke-width="2"/><circle cx="1005" cy="97" r="4" fill="#b9f48a"/><circle cx="1032" cy="109" r="6" fill="#67e8c3"/><circle cx="982" cy="166" r="4" fill="#b9f48a"/><circle cx="930" cy="188" r="4" fill="#67e8c3"/><circle cx="1055" cy="146" r="3" fill="#b9f48a"/>
+<text x="87" y="57" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" font-weight="600" fill="#67e8c3" letter-spacing="1.1">SOUTHEAST ASIA  /  CONSUMER CREDIT</text>
+<text x="50" y="132" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="63" font-weight="700" fill="#f4f7ff">SEA Credit Radar</text>
+<text x="54" y="174" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="25" font-weight="450" fill="#c7d1e4">Daily events and follow-up reporting</text>
+<text x="54" y="247" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" font-weight="600" fill="#b9f48a" letter-spacing="1.1">NEWS RSS    /    STRUCTURED EVENTS    /    SQLITE</text>
+</g>
+<rect x="1" y="1" width="1198" height="280" rx="24" fill="none" stroke="#67e8c3" stroke-opacity=".50" stroke-width="2"/>
+</svg>
